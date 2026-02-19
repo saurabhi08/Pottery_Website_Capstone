@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mumbaa Ceramic Studio – Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <span class="brand-text">mumbaaceramicstudio</span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="#" class="nav-link active">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Profile</a>
+      </nav>
+
+      <div class="header-right">
+        <button class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge">2</span>
+          </span>
+        </button>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner container">
+      <h1 class="hero-title">
+        Exquisite ceramics that blend traditional artistry with contemporary design.
+      </h1>
+      <form class="hero-search" onsubmit="return false;">
+        <input type="text" placeholder="Search" aria-label="Search" />
+        <button type="submit" class="hero-search-button" aria-label="Search">
+          <img src="imgs/search.png" alt="Search">
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <main>
+    <section class="section">
+      <div class="section-header container">
+        <div>
+          <h2 class="section-title">Best Sellers</h2>
+          <p class="section-subtitle">Most loved by the customers</p>
+        </div>
+        <button class="text-link-button">View all</button>
+      </div>
+
+      <div class="container cards-row">
+        <!-- Card 1 -->
+        <article class="product-card" data-product-id="13" data-product-name="Latte Coffee Mug" data-product-desc="Handcrafted stoneware mug" data-product-price="1250" data-product-image="imgs/img1.jpeg">
+          <div class="product-media product-media--tall"><img src="imgs/img1.jpeg" alt="Latte Coffee Mug"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Latte Coffee Mug</h3>
+                <p class="product-sub">Handcrafted stoneware mug</p>
+              </div>
+              <span class="badge-new">New</span>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,250</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small" aria-label="Add to wishlist">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card" data-product-id="14" data-product-name="Ocean Glaze Bowl" data-product-desc="Wheel-thrown serving bowl" data-product-price="1100" data-product-image="imgs/img2.jpeg">
+          <div class="product-media product-media--tall"><img src="imgs/img2.jpeg" alt="Ocean Glaze Bowl"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Ocean Glaze Bowl</h3>
+                <p class="product-sub">Wheel-thrown serving bowl</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,100</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small" aria-label="Add to wishlist">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="product-card" data-product-id="15" data-product-name="Ocean Glaze Bowl" data-product-desc="Wheel-thrown serving bowl" data-product-price="1100" data-product-image="imgs/img2.jpeg">
+          <div class="product-media product-media--tall"><img src="imgs/img2.jpeg" alt="Ocean Glaze Bowl"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Ocean Glaze Bowl</h3>
+                <p class="product-sub">Wheel-thrown serving bowl</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,100</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small" aria-label="Add to wishlist">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="container text-center">
+        <button class="btn btn-outline">Show More Products</button>
+      </div>
+    </section>
+
+    <!-- CATEGORY SECTIONS (Mugs, Bowls, Ashtrays, Plates, Jars) -->
+    <section class="section">
+      <div class="section-header container">
+        <div>
+          <h2 class="section-title">Mugs</h2>
+          <p class="section-subtitle">4 items</p>
+        </div>
+      </div>
+      <div class="container cards-row">
+        <!-- four cards, similar structure -->
+        <article class="product-card" data-product-id="16" data-product-name="Artisan Coffee Mug" data-product-desc="Matte finish, 300 ml" data-product-price="1100" data-product-image="imgs/img1.jpeg">
+          <div class="product-media"><img src="imgs/img1.jpeg" alt="Artisan Coffee Mug"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Artisan Coffee Mug</h3>
+                <p class="product-sub">Matte finish, 300 ml</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,100</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product-id="17" data-product-name="Minimal White Cup" data-product-desc="Porcelain, 220 ml" data-product-price="950" data-product-image="imgs/img2.jpeg">
+          <div class="product-media"><img src="imgs/img2.jpeg" alt="Minimal White Cup"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Minimal White Cup</h3>
+                <p class="product-sub">Porcelain, 220 ml</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 950</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product-id="18" data-product-name="Speckled Mug" data-product-desc="Hand-painted rim" data-product-price="1050" data-product-image="imgs/img3.jpeg">
+          <div class="product-media"><img src="imgs/img3.jpeg" alt="Speckled Mug"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Speckled Mug</h3>
+                <p class="product-sub">Hand-painted rim</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,050</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product-id="19" data-product-name="Classic Latte Mug" data-product-desc="Dishwasher safe" data-product-price="1000" data-product-image="imgs/img1.jpeg">
+          <div class="product-media"><img src="imgs/img1.jpeg" alt="Classic Latte Mug"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Classic Latte Mug</h3>
+                <p class="product-sub">Dishwasher safe</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,000</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small">♡</button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!--sections for Bowls, Ashtrays, Plates, Jars -->
+    <section class="section">
+      <div class="section-header container">
+        <div>
+          <h2 class="section-title">Bowls</h2>
+          <p class="section-subtitle">4 items</p>
+        </div>
+      </div>
+      <div class="container cards-row">
+        <!-- reuse same product-card markup; different bg utility classes if wanted -->
+        <article class="product-card" data-product-id="20" data-product-name="Serving Bowl" data-product-desc="Ocean glaze" data-product-price="1200" data-product-image="imgs/img1.jpeg"><div class="product-media"><img src="imgs/img1.jpeg" alt="Serving Bowl"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Serving Bowl</h3><p class="product-sub">Ocean glaze</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,200</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="21" data-product-name="Ramen Bowl" data-product-desc="Deep, wide shape" data-product-price="1150" data-product-image="imgs/img2.jpeg"><div class="product-media"><img src="imgs/img2.jpeg" alt="Ramen Bowl"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Ramen Bowl</h3><p class="product-sub">Deep, wide shape</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,150</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="22" data-product-name="Salad Bowl" data-product-desc="Hand-glazed" data-product-price="1050" data-product-image="imgs/img1.jpeg"><div class="product-media"><img src="imgs/img1.jpeg" alt="Salad Bowl"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Salad Bowl</h3><p class="product-sub">Hand-glazed</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,050</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="23" data-product-name="Noodle Bowl" data-product-desc="Matte finish" data-product-price="1000" data-product-image="imgs/img2.jpeg"><div class="product-media"><img src="imgs/img2.jpeg" alt="Noodle Bowl"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Noodle Bowl</h3><p class="product-sub">Matte finish</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,000</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header container">
+        <div>
+          <h2 class="section-title">Ashtrays</h2>
+          <p class="section-subtitle">4 items</p>
+        </div>
+      </div>
+      <div class="container cards-row">
+        <article class="product-card" data-product-id="24" data-product-name="Terracotta Ashtray" data-product-desc="Outdoor safe" data-product-price="800" data-product-image="imgs/img3.jpeg"><div class="product-media"><img src="imgs/img3.jpeg" alt="Terracotta Ashtray"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Terracotta Ashtray</h3><p class="product-sub">Outdoor safe</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 800</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="25" data-product-name="Glazed Ashtray" data-product-desc="High gloss" data-product-price="850" data-product-image="imgs/img4.jpeg"><div class="product-media"><img src="imgs/img4.jpeg" alt="Glazed Ashtray"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Glazed Ashtray</h3><p class="product-sub">High gloss</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 850</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="26" data-product-name="Desk Ashtray" data-product-desc="Compact size" data-product-price="780" data-product-image="imgs/img3.jpeg"><div class="product-media"><img src="imgs/img3.jpeg" alt="Desk Ashtray"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Desk Ashtray</h3><p class="product-sub">Compact size</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 780</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="27" data-product-name="Vintage Ashtray" data-product-desc="Patterned rim" data-product-price="900" data-product-image="imgs/img4.jpeg"><div class="product-media"><img src="imgs/img4.jpeg" alt="Vintage Ashtray"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Vintage Ashtray</h3><p class="product-sub">Patterned rim</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 900</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header container">
+        <div>
+          <h2 class="section-title">Plates</h2>
+          <p class="section-subtitle">4 items</p>
+        </div>
+      </div>
+      <div class="container cards-row">
+        <article class="product-card" data-product-id="28" data-product-name="Dinner Plate" data-product-desc="Set of 2" data-product-price="1000" data-product-image="imgs/img1.jpeg"><div class="product-media"><img src="imgs/img1.jpeg" alt="Dinner Plate"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Dinner Plate</h3><p class="product-sub">Set of 2</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,000</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="29" data-product-name="Side Plate" data-product-desc="Hand glazed" data-product-price="750" data-product-image="imgs/img2.jpeg"><div class="product-media"><img src="imgs/img2.jpeg" alt="Side Plate"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Side Plate</h3><p class="product-sub">Hand glazed</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 750</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="30" data-product-name="Dessert Plate" data-product-desc="Set of 2" data-product-price="800" data-product-image="imgs/img1.jpeg"><div class="product-media"><img src="imgs/img1.jpeg" alt="Dessert Plate"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Dessert Plate</h3><p class="product-sub">Set of 2</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 800</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="31" data-product-name="Serving Platter" data-product-desc="Oval shape" data-product-price="1200" data-product-image="imgs/img2.jpeg"><div class="product-media"><img src="imgs/img2.jpeg" alt="Serving Platter"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Serving Platter</h3><p class="product-sub">Oval shape</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,200</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header container">
+        <div>
+          <h2 class="section-title">Jars</h2>
+          <p class="section-subtitle">4 items</p>
+        </div>
+      </div>
+      <div class="container cards-row">
+        <article class="product-card" data-product-id="32" data-product-name="Storage Jar" data-product-desc="Airtight lid" data-product-price="950" data-product-image="imgs/img3.jpeg"><div class="product-media"><img src="imgs/img3.jpeg" alt="Storage Jar"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Storage Jar</h3><p class="product-sub">Airtight lid</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 950</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="33" data-product-name="Cookie Jar" data-product-desc="Hand-painted" data-product-price="1050" data-product-image="imgs/img4.jpeg"><div class="product-media"><img src="imgs/img4.jpeg" alt="Cookie Jar"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Cookie Jar</h3><p class="product-sub">Hand-painted</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,050</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="34" data-product-name="Spice Jar" data-product-desc="Set of 3" data-product-price="1200" data-product-image="imgs/img3.jpeg"><div class="product-media"><img src="imgs/img3.jpeg" alt="Spice Jar"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Spice Jar</h3><p class="product-sub">Set of 3</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,200</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+        <article class="product-card" data-product-id="35" data-product-name="Tea Jar" data-product-desc="Glazed interior" data-product-price="1150" data-product-image="imgs/img4.jpeg"><div class="product-media"><img src="imgs/img4.jpeg" alt="Tea Jar"></div><div class="product-body"><div class="product-top-row"><div><h3 class="product-title">Tea Jar</h3><p class="product-sub">Glazed interior</p></div></div><div class="product-footer-row"><div class="price-block"><span class="price">₹ 1,150</span></div><div class="product-actions"><button class="icon-button small">♡</button><button class="btn btn-sm add-to-cart-btn">Add to cart</button></div></div></div></article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="#">Mugs</a>
+          <a href="#">Bowls</a>
+          <a href="#">Ashtrays</a>
+          <a href="#">Plates</a>
+          <a href="#">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col footer-subscribe">
+          <h4>Subscribe</h4>
+          <p>Be the first to discover new collections and exclusive offers.</p>
+          <form class="subscribe-form" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email" />
+            <button class="btn btn-sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/cart-utils.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+   

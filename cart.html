@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Profile</a>
+      </nav>
+
+      <div class="header-right">
+        <button class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge">2</span>
+          </span>
+        </button>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" id="cartCount">2</span>
+          </span>
+        </a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART PAGE CONTENT -->
+  <main class="cart-page">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">Your Cart</h1>
+        <p class="page-subtitle">Review your items and proceed to checkout</p>
+      </div>
+
+      <div class="cart-layout">
+        <!-- Cart Items -->
+        <div class="cart-items" id="cartItems">
+          <!-- Cart Item 1 -->
+          <div class="cart-item" data-id="1" data-price="1100">
+            <div class="cart-item-image">
+              <img src="imgs/img1.jpeg" alt="Artisan Coffee Mug">
+            </div>
+            <div class="cart-item-details">
+              <h3 class="cart-item-title">Artisan Coffee Mug</h3>
+              <p class="cart-item-desc">Matte finish, 300 ml</p>
+              <p class="cart-item-price">₹ 1,100</p>
+            </div>
+            <div class="cart-item-qty">
+              <button type="button" class="qty-btn" data-action="minus" aria-label="Decrease quantity">−</button>
+              <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
+              <button type="button" class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+            <div class="cart-item-total">
+              <span class="item-total-price">₹ 1,100</span>
+            </div>
+            <button type="button" class="cart-item-remove" aria-label="Remove item">×</button>
+          </div>
+
+          <!-- Cart Item 2 -->
+          <div class="cart-item" data-id="2" data-price="950">
+            <div class="cart-item-image">
+              <img src="imgs/img2.jpeg" alt="Minimal White Cup">
+            </div>
+            <div class="cart-item-details">
+              <h3 class="cart-item-title">Minimal White Cup</h3>
+              <p class="cart-item-desc">Porcelain, 220 ml</p>
+              <p class="cart-item-price">₹ 950</p>
+            </div>
+            <div class="cart-item-qty">
+              <button type="button" class="qty-btn" data-action="minus" aria-label="Decrease quantity">−</button>
+              <input type="number" class="qty-input" value="1" min="1" max="99" readonly>
+              <button type="button" class="qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+            </div>
+            <div class="cart-item-total">
+              <span class="item-total-price">₹ 950</span>
+            </div>
+            <button type="button" class="cart-item-remove" aria-label="Remove item">×</button>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <aside class="cart-summary">
+          <div class="cart-summary-card">
+            <h2 class="cart-summary-title">Order Summary</h2>
+            <div class="cart-summary-row">
+              <span>Subtotal</span>
+              <span id="cartSubtotal">₹ 2,050</span>
+            </div>
+            <div class="cart-summary-row">
+              <span>Shipping</span>
+              <span id="cartShipping">Calculated at checkout</span>
+            </div>
+            <div class="cart-summary-divider"></div>
+            <div class="cart-summary-row cart-summary-total">
+              <span>Total</span>
+              <span id="cartTotal">₹ 2,050</span>
+            </div>
+            <a href="#" class="btn auth-btn cart-checkout-btn">Proceed to Checkout</a>
+            <a href="products.html" class="cart-continue-shopping">Continue Shopping</a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Empty cart state (hidden by default) -->
+      <div class="cart-empty" id="cartEmpty" style="display: none;">
+        <p class="cart-empty-message">Your cart is empty.</p>
+        <a href="products.html" class="btn btn-outline">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col footer-subscribe">
+          <h4>Subscribe</h4>
+          <p>Be the first to discover new collections and exclusive offers.</p>
+          <form class="subscribe-form" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email" />
+            <button class="btn btn-sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/cart-utils.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

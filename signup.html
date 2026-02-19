@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="signup-page-wrap">
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Profile</a>
+      </nav>
+
+      <div class="header-right">
+        <button class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge">2</span>
+          </span>
+        </button>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="signin.html" class="btn btn-signup">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SIGN UP CARD -->
+  <main class="auth-page">
+    <div class="auth-card">
+      <h1 class="auth-title">Create Account</h1>
+      <p class="auth-subtitle">Sign up to get started with your pottery journey</p>
+
+      <form class="auth-form" id="signUpForm">
+        <div class="auth-form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="signup-email">Email Address</label>
+          <input type="email" id="signup-email" name="email" placeholder="survesaurabhi7@gmail.com" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+        </div>
+        <div class="auth-form-options">
+          <label class="auth-remember">
+            <input type="checkbox" name="terms" id="terms" required>
+            <span>I agree to the Terms & Conditions</span>
+          </label>
+        </div>
+        <button type="submit" class="auth-btn">Sign Up</button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account? <a href="signin.html">Sign In</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#">Shipping &amp; Returns</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col footer-subscribe">
+          <h4>Subscribe</h4>
+          <p>Be the first to discover new collections and exclusive offers.</p>
+          <form class="subscribe-form" onsubmit="return false;">
+            <input type="email" placeholder="Enter your email" />
+            <button class="btn btn-sm" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/cart-utils.js"></script>
+  <script src="js/signup.js"></script>
+</body>
+</html>
