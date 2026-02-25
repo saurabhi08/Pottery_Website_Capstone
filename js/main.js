@@ -68,6 +68,84 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Add to wishlist functionality
+  const addToWishlistButtons = document.querySelectorAll('.add-to-wishlist-btn');
+  console.log('Found add to wishlist buttons:', addToWishlistButtons.length);
+  
+  addToWishlistButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const productCard = this.closest('.product-card');
+      
+      if (!productCard) {
+        console.error('Product card not found');
+        return;
+      }
+      
+      const productId = productCard.getAttribute('data-product-id');
+      const productName = productCard.getAttribute('data-product-name');
+      const productDesc = productCard.getAttribute('data-product-desc');
+      const productPrice = parseInt(productCard.getAttribute('data-product-price'), 10);
+      const productImage = productCard.getAttribute('data-product-image');
+      
+      console.log('Adding to wishlist:', { productId, productName, productPrice });
+      
+      if (!productId || !productName || !productPrice || isNaN(productPrice)) {
+        console.error('Missing product data:', { productId, productName, productPrice });
+        return;
+      }
+      
+      const img = this.querySelector('img');
+      
+      // Check if already in wishlist
+      if (typeof isInWishlist === 'function' && isInWishlist(productId)) {
+        // Remove from wishlist
+        if (typeof removeFromWishlist === 'function') {
+          removeFromWishlist(productId);
+          this.classList.remove('wishlisted');
+          // Change icon back to unfilled
+          if (img) {
+            img.src = 'imgs/wishlist-unfilled.png';
+            img.alt = 'Add to wishlist';
+          }
+          console.log('Removed from wishlist');
+        }
+      } else {
+        // Add to wishlist using wishlist-utils
+        if (typeof addToWishlist === 'function') {
+          try {
+            addToWishlist({
+              id: productId,
+              name: productName,
+              description: productDesc || '',
+              price: productPrice,
+              image: productImage || 'imgs/img1.jpeg'
+            });
+            
+            console.log('Product added to wishlist successfully');
+            this.classList.add('wishlisted');
+            // Change icon to red filled
+            if (img) {
+              img.src = 'imgs/favourite.png';
+              img.alt = 'Remove from wishlist';
+            }
+          } catch (error) {
+            console.error('Error adding to wishlist:', error);
+          }
+        } else {
+          console.error('addToWishlist function not available');
+        }
+      }
+    });
+  });
+
+  // Update wishlist button states on page load
+  if (typeof updateWishlistBadge === 'function') {
+    updateWishlistBadge();
+  }
+
   // Subscribe form handler
   const subscribeForm = document.getElementById('subscribeForm');
   if (subscribeForm) {

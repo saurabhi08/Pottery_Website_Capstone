@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="account.html" class="nav-link">Profile</a>
+      </nav>
+
+      <div class="header-right">
+        <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- WISHLIST PAGE CONTENT -->
+  <main class="wishlist-page">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">My Wishlist</h1>
+        <p class="page-subtitle">Your favorite items</p>
+      </div>
+
+      <div class="wishlist-layout">
+        <!-- Wishlist Items -->
+        <div class="wishlist-items" id="wishlistItems">
+          <!-- Items will be dynamically generated -->
+        </div>
+      </div>
+
+      <!-- Empty wishlist state (hidden by default) -->
+      <div class="wishlist-empty" id="wishlistEmpty" style="display: none;">
+        <p class="wishlist-empty-message">Your wishlist is empty.</p>
+        <a href="products.html" class="btn btn-outline">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/cart-utils.js"></script>
+  <script src="js/wishlist-utils.js"></script>
+  <script src="js/wishlist.js"></script>
+</body>
+</html>
