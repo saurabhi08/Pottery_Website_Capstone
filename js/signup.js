@@ -46,16 +46,19 @@ document.addEventListener('DOMContentLoaded', function () {
         auth.createUserWithEmailAndPassword(email, password)
           .then(function(userCredential) {
             var user = userCredential.user;
-            
-            // Save user name to Firestore if db is available
+            var role = 'customer';
+            var userData = {
+              fullName: fullName,
+              email: email,
+              role: role,
+              createdAt: (typeof firebase !== 'undefined' && firebase.firestore && firebase.firestore.FieldValue) ? firebase.firestore.FieldValue.serverTimestamp() : new Date()
+            };
             if (typeof db !== 'undefined' && db) {
-              db.collection('users').doc(user.uid).set({
-                fullName: fullName,
-                email: email,
-                createdAt: new Date()
+              return db.collection('users').doc(user.uid).set(userData).then(function() {
+                alert('Account created successfully! Welcome, ' + fullName + '!');
+                window.location.href = 'index.html';
               });
             }
-            
             alert('Account created successfully! Welcome, ' + fullName + '!');
             window.location.href = 'index.html';
           })

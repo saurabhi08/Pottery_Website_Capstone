@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=2" />
+  <style>
+    /* About page layout – ensures image left / text right and values display when opening via file:// */
+    .about-page { padding: 3rem 0 4rem; background: #F8F7F5; }
+    .about-section { padding: 4rem 0; }
+    .about-section:first-child { padding-top: 2.5rem; }
+    .about-page .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
+    .about-two-col,
+    .about-mission-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-page-title { font-family: "Cormorant Garamond", serif; font-size: 2.25rem; font-weight: 700; color: #241811; margin: 0 0 1.25rem; line-height: 1.2; }
+    .about-mission-text p { margin: 0 0 1.25rem; font-size: 1rem; line-height: 1.65; color: #766556; }
+    .about-mission-text p:last-child { margin-bottom: 0; }
+    .about-mission-media,
+    .about-creation-media { border-radius: 20px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.08); background: #e8e6e3; }
+    .about-mission-media img,
+    .about-creation-media img { width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 1; }
+    .about-values-header { text-align: center; max-width: 540px; margin: 0 auto 3rem; }
+    .about-values-tagline { margin: 0.25rem 0 0; font-size: 1rem; line-height: 1.5; color: #766556; }
+    .about-values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .about-value-card { background: #fff; border-radius: 16px; padding: 2rem 1.25rem; box-shadow: 0 2px 20px rgba(0,0,0,0.06); text-align: center; }
+    .about-value-icon {
+      display: flex; justify-content: center; align-items: center;
+      width: 56px; height: 56px; margin: 0 auto 1.25rem; border-radius: 50%;
+      background: #e8dcc8; color: #8b5a3c;
+    }
+    .about-value-icon svg { width: 28px; height: 28px; }
+    .about-value-card h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 0.5rem; color: #241811; }
+    .about-value-card p { margin: 0; font-size: 0.9rem; line-height: 1.55; color: #766556; }
+    .about-creation-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .about-process-list { margin: 0; padding-left: 1.5rem; list-style: decimal; }
+    .about-process-list li { margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.65; color: #766556; }
+    .about-process-list strong { color: #241811; }
+    @media (max-width: 900px) {
+      .about-two-col, .about-mission-inner, .about-creation-inner { grid-template-columns: 1fr; }
+      .about-creation-inner .about-creation-media { order: -1; }
+      .about-values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .about-values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="profile-dropdown">
+          <a href="#" class="icon-button profile-dropdown-trigger" id="profileDropdownTrigger" aria-label="Profile">
+            <img src="imgs/profile.png" alt="Profile" width="24" height="24">
+          </a>
+          <div class="profile-dropdown-menu" id="profileDropdownMenu">
+            <div class="profile-dropdown-greeting">Hello <strong id="profileDropdownName">Guest</strong></div>
+            <div class="profile-dropdown-meta" id="profileDropdownMeta">Sign in to save your details</div>
+            <a href="account.html#orders">Orders</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="contact.html">Help</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#coupons">Coupons</a>
+            <a href="account.html#saved-cards">Saved Cards</a>
+            <a href="account.html#addresses">Saved Address</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#profile">Edit Profile</a>
+            <a href="#" class="profile-dropdown-logout" id="profileDropdownLogout">Logout</a>
+          </div>
+        </div>
+        <a href="#" class="icon-button" aria-label="Search">
+          <img src="imgs/search.png" alt="Search" width="20" height="20">
+        </a>
+        <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT PAGE CONTENT -->
+  <main class="about-page">
+    <!-- Our Mission: image left, description right -->
+    <section class="about-section about-mission">
+      <div class="container about-two-col about-mission-inner">
+        <div class="about-mission-media">
+          <img src="imgs/mission.JPG" alt="Unglazed pottery pieces in our studio">
+        </div>
+        <div class="about-mission-text">
+          <h1 class="about-page-title">Our Mission</h1>
+          <p>
+            We believe in the beauty of slow creation and the value of handmade objects. Our mission is to create functional art that enriches daily life while supporting local artisans and sustainable practices.
+          </p>
+          <p>
+            Each piece tells a story of dedication, skill, and the timeless craft of pottery. We work with locally sourced materials and eco-friendly glazes, ensuring that our beautiful ceramics are as kind to the earth as they are to your home.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Values: centered heading + 4 cards -->
+    <section class="about-section about-values">
+      <div class="container">
+        <div class="about-values-header">
+          <h2 class="about-page-title">Our Values</h2>
+          <p class="about-values-tagline">The principles that guide everything we create</p>
+        </div>
+        <div class="about-values-grid">
+          <article class="about-value-card">
+            <div class="about-value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Crafted with Love</h3>
+            <p>Every piece is made by skilled artisans who pour their heart into their work.</p>
+          </article>
+          <article class="about-value-card">
+            <div class="about-value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            </div>
+            <h3>Sustainable Practices</h3>
+            <p>We use eco-friendly materials and processes to minimize our environmental impact.</p>
+          </article>
+          <article class="about-value-card">
+            <div class="about-value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Community Focused</h3>
+            <p>Supporting local artisans and preserving traditional pottery techniques.</p>
+          </article>
+          <article class="about-value-card">
+            <div class="about-value-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>Quality Assured</h3>
+            <p>Each piece undergoes rigorous quality checks to ensure excellence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Creation Process: image left, text right (numbered list) -->
+    <section class="about-section about-creation">
+      <div class="container about-two-col about-creation-inner">
+        <div class="about-creation-media">
+          <img src="imgs/creation.jpeg" alt="Pottery pieces in our studio">
+        </div>
+        <div class="about-creation-text">
+          <h2 class="about-page-title">The Creation Process</h2>
+          <ol class="about-process-list">
+            <li>
+              <strong>Shaping:</strong> Each piece begins on the pottery wheel, where clay is centred and pulled into simple, functional forms designed for daily use.
+            </li>
+            <li>
+              <strong>Drying &amp; Trimming:</strong> Once leather-hard, we refine the shape, add details and trim the foot for a comfortable, stable finish.
+            </li>
+            <li>
+              <strong>First Firing (Bisque):</strong> Pieces are fired in the kiln to harden the clay and prepare the surface for glazing.
+            </li>
+            <li>
+              <strong>Glazing:</strong> We apply small-batch glazes by hand, layering colours and finishes to achieve the look and feel we want.
+            </li>
+            <li>
+              <strong>Final Firing:</strong> A second firing at high temperature creates a smooth, glass-like surface that is durable and food-safe.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="shipping-returns.html">Shipping &amp; Returns</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/cart-utils.js"></script>
+  <script src="js/wishlist-utils.js"></script>
+  <script src="js/profile-dropdown.js"></script>
+</body>
+</html>

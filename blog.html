@@ -23,12 +23,30 @@
       <nav class="main-nav">
         <a href="products.html" class="nav-link">Shop</a>
         <a href="blog.html" class="nav-link active">Blog</a>
-        <a href="#" class="nav-link">About</a>
+        <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="account.html" class="nav-link">Profile</a>
       </nav>
 
       <div class="header-right">
+        <div class="profile-dropdown">
+          <a href="#" class="icon-button profile-dropdown-trigger" id="profileDropdownTrigger" aria-label="Profile">
+            <img src="imgs/profile.png" alt="Profile" width="24" height="24">
+          </a>
+          <div class="profile-dropdown-menu" id="profileDropdownMenu">
+            <div class="profile-dropdown-greeting">Hello <strong id="profileDropdownName">Guest</strong></div>
+            <div class="profile-dropdown-meta" id="profileDropdownMeta">Sign in to save your details</div>
+            <a href="account.html#orders">Orders</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="contact.html">Help</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#coupons">Coupons</a>
+            <a href="account.html#saved-cards">Saved Cards</a>
+            <a href="account.html#addresses">Saved Address</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#profile">Edit Profile</a>
+            <a href="#" class="profile-dropdown-logout" id="profileDropdownLogout">Logout</a>
+          </div>
+        </div>
         <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
           <span class="wishlist-icon-wrapper">
             <img src="imgs/wishlist-01.png" alt="Wishlist">
@@ -189,9 +207,14 @@
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
-          <a href="#">Shipping &amp; Returns</a>
-          <a href="#">Terms &amp; Conditions</a>
-          <a href="#">Privacy Policy</a>
+          <a href="index.html">Home</a>
+          <a href="products.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="shipping-returns.html">Shipping &amp; Returns</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
         </div>
         <div class="footer-col footer-subscribe">
           <h4>Subscribe</h4>
@@ -210,5 +233,7 @@
 
   <script src="js/cart-utils.js"></script>
   <script src="js/wishlist-utils.js"></script>
+  <script src="js/newsletter.js"></script>
+  <script src="js/profile-dropdown.js"></script>
 </body>
 </html>

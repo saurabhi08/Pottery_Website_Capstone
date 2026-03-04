@@ -235,6 +235,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Click on product card (image/title) goes to product detail page; buttons still add to cart/wishlist
+  document.querySelectorAll('.product-card[data-product-id]').forEach(function (card) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('button') || e.target.closest('.product-actions')) return;
+      var id = card.getAttribute('data-product-id');
+      if (!id) return;
+      var name = card.getAttribute('data-product-name');
+      var desc = card.getAttribute('data-product-desc');
+      var price = card.getAttribute('data-product-price');
+      var img = card.getAttribute('data-product-image');
+      try {
+        sessionStorage.setItem('mumbaa_product_' + id, JSON.stringify({ id: id, name: name || '', description: desc || '', price: parseInt(price, 10) || 0, image: img || 'imgs/img1.jpeg', images: img ? [img] : ['imgs/img1.jpeg'] }));
+      } catch (err) {}
+      window.location.href = 'product.html?id=' + encodeURIComponent(id);
+    });
+  });
+
   // Update wishlist button states on page load
   if (typeof updateWishlistBadge === 'function') {
     updateWishlistBadge();

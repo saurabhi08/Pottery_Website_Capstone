@@ -21,14 +21,32 @@
       </div>
 
       <nav class="main-nav">
-        <a href="#" class="nav-link active">Shop</a>
+        <a href="products.html" class="nav-link active">Shop</a>
         <a href="blog.html" class="nav-link">Blog</a>
-        <a href="#" class="nav-link">About</a>
-        <a href="#" class="nav-link">Contact</a>
-        <a href="account.html" class="nav-link">Profile</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-right">
+        <div class="profile-dropdown">
+          <a href="#" class="icon-button profile-dropdown-trigger" id="profileDropdownTrigger" aria-label="Profile">
+            <img src="imgs/profile.png" alt="Profile" width="24" height="24">
+          </a>
+          <div class="profile-dropdown-menu" id="profileDropdownMenu">
+            <div class="profile-dropdown-greeting">Hello <strong id="profileDropdownName">Guest</strong></div>
+            <div class="profile-dropdown-meta" id="profileDropdownMeta">Sign in to save your details</div>
+            <a href="account.html#orders">Orders</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="contact.html">Help</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#coupons">Coupons</a>
+            <a href="account.html#saved-cards">Saved Cards</a>
+            <a href="account.html#addresses">Saved Address</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#profile">Edit Profile</a>
+            <a href="#" class="profile-dropdown-logout" id="profileDropdownLogout">Logout</a>
+          </div>
+        </div>
         <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
           <span class="wishlist-icon-wrapper">
             <img src="imgs/wishlist-01.png" alt="Wishlist">
@@ -64,17 +82,19 @@
 
   <!-- BEST SELLERS -->
   <main>
-    <section class="section">
+    <section class="section section--bestsellers">
       <div class="section-header container">
         <div>
           <h2 class="section-title">Best Sellers</h2>
           <p class="section-subtitle">Most loved by the customers</p>
         </div>
-        <button class="text-link-button">View all</button>
+        <a href="products.html" class="text-link-button">View all</a>
       </div>
 
-      <div class="container cards-row">
-        <!-- Card 1 -->
+      <div class="container">
+        <div class="bestsellers-scroll-wrap">
+          <div class="bestsellers-scroll">
+            <!-- Card 1 -->
         <article class="product-card" data-product-id="13" data-product-name="Latte Coffee Mug" data-product-desc="Handcrafted stoneware mug" data-product-price="1250" data-product-image="imgs/img1.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img1.jpeg" alt="Latte Coffee Mug"></div>
           <div class="product-body">
@@ -146,6 +166,80 @@
             </div>
           </div>
         </article>
+
+        <!-- Card 4 -->
+        <article class="product-card" data-product-id="16" data-product-name="Artisan Coffee Mug" data-product-desc="Matte finish, 300 ml" data-product-price="1100" data-product-image="imgs/img1.jpeg">
+          <div class="product-media product-media--tall"><img src="imgs/img1.jpeg" alt="Artisan Coffee Mug"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Artisan Coffee Mug</h3>
+                <p class="product-sub">Matte finish, 300 ml</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,100</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
+                  <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
+                </button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="product-card" data-product-id="17" data-product-name="Minimal White Cup" data-product-desc="Porcelain, 220 ml" data-product-price="950" data-product-image="imgs/img2.jpeg">
+          <div class="product-media product-media--tall"><img src="imgs/img2.jpeg" alt="Minimal White Cup"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Minimal White Cup</h3>
+                <p class="product-sub">Porcelain, 220 ml</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 950</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
+                  <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
+                </button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="product-card" data-product-id="18" data-product-name="Speckled Mug" data-product-desc="Hand-painted rim" data-product-price="1050" data-product-image="imgs/img3.jpeg">
+          <div class="product-media product-media--tall"><img src="imgs/img3.jpeg" alt="Speckled Mug"></div>
+          <div class="product-body">
+            <div class="product-top-row">
+              <div>
+                <h3 class="product-title">Speckled Mug</h3>
+                <p class="product-sub">Hand-painted rim</p>
+              </div>
+            </div>
+            <div class="product-footer-row">
+              <div class="price-block">
+                <span class="price">₹ 1,050</span>
+              </div>
+              <div class="product-actions">
+                <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
+                  <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
+                </button>
+                <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        </div>
+        </div>
       </div>
 
       <div class="container text-center">
@@ -337,17 +431,22 @@
       <div class="footer-columns">
         <div class="footer-col">
           <h4>Collections</h4>
-          <a href="#">Mugs</a>
-          <a href="#">Bowls</a>
-          <a href="#">Ashtrays</a>
-          <a href="#">Plates</a>
-          <a href="#">Jars</a>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
-          <a href="#">Shipping &amp; Returns</a>
-          <a href="#">Terms &amp; Conditions</a>
-          <a href="#">Privacy Policy</a>
+          <a href="index.html">Home</a>
+          <a href="products.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="shipping-returns.html">Shipping &amp; Returns</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
         </div>
         <div class="footer-col footer-subscribe">
           <h4>Subscribe</h4>
@@ -365,8 +464,16 @@
     </div>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/profile-dropdown.js"></script>
   <script src="js/cart-utils.js"></script>
   <script src="js/wishlist-utils.js"></script>
+  <script src="js/newsletter.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -23,7 +23,17 @@ document.addEventListener('DOMContentLoaded', function () {
             if (remember) {
               localStorage.setItem('userEmail', email);
             }
-            window.location.href = 'index.html';
+            if (typeof getUserRole === 'function') {
+              getUserRole(function(role) {
+                if (role === 'admin') {
+                  window.location.href = 'admin.html';
+                } else {
+                  window.location.href = 'index.html';
+                }
+              });
+            } else {
+              window.location.href = 'index.html';
+            }
           })
           .catch(function(error) {
             alert(error.message || 'Sign in failed. Please check your credentials.');

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed - Mumbaa Ceramic Studio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square"><img src="imgs/logo.png" alt="Mumbaa Ceramic Studio"></div>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="account.html" class="nav-link">Profile</a>
+      </nav>
+      <div class="header-right">
+        <a href="signup.html" class="btn btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="confirmation-page">
+    <div class="container">
+      <div class="confirmation-card" id="confirmationCard">
+        <h1>Thank you for your order</h1>
+        <p class="confirmation-msg" id="confirmationMsg">Your order has been placed successfully.</p>
+        <p class="confirmation-id">Order ID: <strong id="orderIdDisplay">—</strong></p>
+        <a href="products.html" class="btn auth-btn">Continue Shopping</a>
+        <a href="account.html" class="btn btn-outline">View Order History</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-functions-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script>
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var orderId = p.get('orderId') || '—';
+      var sessionId = p.get('session_id');
+      var el = document.getElementById('orderIdDisplay');
+      var msgEl = document.getElementById('confirmationMsg');
+      if (el) el.textContent = orderId;
+      if (sessionId && orderId && orderId !== '—' && typeof firebase !== 'undefined' && firebase.functions) {
+        var confirmPayment = firebase.functions().httpsCallable('confirmStripePayment');
+        confirmPayment({ orderId: orderId, sessionId: sessionId })
+          .then(function (result) {
+            if (result && result.data && result.data.ok && msgEl) {
+              msgEl.textContent = 'Your order has been placed and payment was successful.';
+            }
+          })
+          .catch(function () {});
+      }
+    })();
+  </script>
+</body>
+</html>

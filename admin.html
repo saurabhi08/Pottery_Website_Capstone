@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Mumbaa Ceramic Studio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <div class="brand-logo-square"><img src="imgs/logo.png" alt="Mumbaa Ceramic Studio"></div>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="admin.html" class="nav-link active">Admin</a>
+        <a href="account.html" class="nav-link">Profile</a>
+      </nav>
+      <div class="header-right">
+        <button type="button" class="btn btn-outline" id="adminSignOut">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <div class="container">
+      <div class="admin-forbidden" id="adminForbidden" style="display: none;">
+        <h1>Access Denied</h1>
+        <p>You need admin rights to view this page.</p>
+        <a href="index.html" class="btn btn-outline">Go Home</a>
+      </div>
+      <div class="admin-content" id="adminContent">
+        <h1 class="page-title">Admin Panel</h1>
+        <div class="admin-tabs">
+          <button type="button" class="admin-tab active" data-tab="products">Products</button>
+          <button type="button" class="admin-tab" data-tab="categories">Categories</button>
+          <button type="button" class="admin-tab" data-tab="orders">Orders</button>
+          <button type="button" class="admin-tab" data-tab="messages">Contact Messages</button>
+        </div>
+        <div class="admin-panel" id="adminProducts">
+          <h2>Products</h2>
+          <button type="button" class="btn btn-sm" id="adminAddProduct">Add Product</button>
+          <div id="adminProductsList"></div>
+        </div>
+        <div class="admin-panel" id="adminCategories" style="display: none;">
+          <h2>Categories</h2>
+          <button type="button" class="btn btn-sm" id="adminAddCategory">Add Category</button>
+          <div id="adminCategoriesList"></div>
+        </div>
+        <div class="admin-panel" id="adminOrders" style="display: none;">
+          <h2>Orders</h2>
+          <div id="adminOrdersList"></div>
+        </div>
+        <div class="admin-panel" id="adminMessages" style="display: none;">
+          <h2>Contact Messages</h2>
+          <p class="admin-messages-intro">Messages from the contact form. No email setup needed &mdash; view them here when you log in.</p>
+          <div id="adminMessagesList"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
