@@ -14,9 +14,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="header-left">
-        <div class="brand-logo-square">
-          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
-        </div>
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
         <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
       </div>
 
@@ -134,7 +136,7 @@
         <div class="products-header">
           <h1 class="page-title">Shop</h1>
           <div class="products-meta">
-            <span class="products-count">24 products</span>
+            <span class="products-count" id="productsCount">12 products</span>
             <select class="sort-select">
               <option>Sort by: Featured</option>
               <option>Price: Low to High</option>
@@ -145,286 +147,9 @@
         </div>
 
         <div class="products-grid-shop" id="productsGrid">
-          <!-- Product cards will be dynamically generated -->
-          <article class="product-card" data-product-id="1" data-product-name="Artisan Coffee Mug" data-product-desc="Matte finish, 300 ml" data-product-price="1100" data-product-image="imgs/img1.jpeg">
-            <div class="product-media"><img src="imgs/img1.jpeg" alt="Artisan Coffee Mug"></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Artisan Coffee Mug</h3>
-                  <p class="product-sub">Matte finish, 300 ml</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,100</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card" data-product-id="2" data-product-name="Minimal White Cup" data-product-desc="Porcelain, 220 ml" data-product-price="950" data-product-image="imgs/img2.jpeg">
-            <div class="product-media"><img src="imgs/img2.jpeg" alt="Minimal White Cup"></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Minimal White Cup</h3>
-                  <p class="product-sub">Porcelain, 220 ml</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 950</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img3.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Speckled Mug</h3>
-                  <p class="product-sub">Hand-painted rim</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,050</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img1.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Serving Bowl</h3>
-                  <p class="product-sub">Ocean glaze</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,200</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img2.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Ramen Bowl</h3>
-                  <p class="product-sub">Deep, wide shape</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,150</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img3.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Dinner Plate</h3>
-                  <p class="product-sub">Set of 2</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,000</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img4.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Side Plate</h3>
-                  <p class="product-sub">Hand glazed</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 750</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img1.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Storage Jar</h3>
-                  <p class="product-sub">Airtight lid</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 950</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img2.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Cookie Jar</h3>
-                  <p class="product-sub">Hand-painted</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,050</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img3.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Terracotta Ashtray</h3>
-                  <p class="product-sub">Outdoor safe</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 800</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img4.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Glazed Ashtray</h3>
-                  <p class="product-sub">High gloss</p>
-                </div>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 850</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-media"><img src="imgs/img1.jpeg" alt=""></div>
-            <div class="product-body">
-              <div class="product-top-row">
-                <div>
-                  <h3 class="product-title">Latte Coffee Mug</h3>
-                  <p class="product-sub">Handcrafted stoneware</p>
-                </div>
-                <span class="badge-new">New</span>
-              </div>
-              <div class="product-footer-row">
-                <div class="price-block">
-                  <span class="price">₹ 1,250</span>
-                </div>
-                <div class="product-actions">
-                  <button class="icon-button small add-to-wishlist-btn" aria-label="Add to wishlist">
-                    <img src="imgs/wishlist-unfilled.png" alt="Add to wishlist">
-                  </button>
-                  <button class="btn btn-sm add-to-cart-btn">Add to cart</button>
-                </div>
-              </div>
-            </div>
-          </article>
+          <p class="shop-loading">Loading products…</p>
         </div>
-
-        <!-- Pagination -->
+        <p class="shop-no-results" id="shopNoResults" style="display: none;">No products match your filters. Try clearing filters.</p>
         <div class="pagination">
           <button class="pagination-btn" disabled>Previous</button>
           <button class="pagination-btn active">1</button>
@@ -486,6 +211,11 @@
     </div>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/shop-products.js"></script>
   <script src="js/cart-utils.js"></script>
   <script src="js/wishlist-utils.js"></script>
   <script src="js/newsletter.js"></script>

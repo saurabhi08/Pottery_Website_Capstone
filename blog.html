@@ -14,9 +14,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="header-left">
-        <div class="brand-logo-square">
-          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
-        </div>
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
         <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
       </div>
 
@@ -73,113 +75,9 @@
         <p class="page-subtitle">Discover the art of pottery, crafting techniques, and stories from our studio.</p>
       </div>
 
-      <!-- Blog Posts Grid -->
-      <div class="blog-grid">
-        <!-- Blog Post 1 -->
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="imgs/img1.jpeg" alt="Pottery Wheel Throwing">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-date">February 5, 2026</span>
-              <span class="blog-category">Techniques</span>
-            </div>
-            <h2 class="blog-title">Mastering the Art of Wheel Throwing</h2>
-            <p class="blog-excerpt">Learn the fundamentals of wheel throwing and discover how to create beautiful, symmetrical ceramic pieces from raw clay. This comprehensive guide covers everything from centering to trimming.</p>
-            <a href="#" class="blog-read-more">Read More →</a>
-          </div>
-        </article>
+      <!-- Blog content will be loaded from Firestore -->
+      <div id="blogContent" class="blog-grid"></div>
 
-        <!-- Blog Post 2 -->
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="imgs/img2.jpeg" alt="Glazing Techniques">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-date">January 28, 2026</span>
-              <span class="blog-category">Glazing</span>
-            </div>
-            <h2 class="blog-title">Understanding Glaze Chemistry</h2>
-            <p class="blog-excerpt">Dive deep into the science behind ceramic glazes. Understand how different minerals and oxides create unique colors and textures, and learn to mix your own custom glazes.</p>
-            <a href="#" class="blog-read-more">Read More →</a>
-          </div>
-        </article>
-
-        <!-- Blog Post 3 -->
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="imgs/img3.jpeg" alt="Studio Tour">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-date">January 20, 2026</span>
-              <span class="blog-category">Studio</span>
-            </div>
-            <h2 class="blog-title">A Day in Our Pottery Studio</h2>
-            <p class="blog-excerpt">Take a behind-the-scenes look at our daily operations. From morning clay preparation to evening kiln firing, discover what goes into creating each handcrafted piece.</p>
-            <a href="#" class="blog-read-more">Read More →</a>
-          </div>
-        </article>
-
-        <!-- Blog Post 4 -->
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="imgs/img4.jpeg" alt="Ceramic Care">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-date">January 15, 2026</span>
-              <span class="blog-category">Care Guide</span>
-            </div>
-            <h2 class="blog-title">Caring for Your Ceramic Collection</h2>
-            <p class="blog-excerpt">Essential tips for maintaining your ceramic pieces. Learn proper cleaning methods, storage techniques, and how to preserve the beauty of your pottery for years to come.</p>
-            <a href="#" class="blog-read-more">Read More →</a>
-          </div>
-        </article>
-
-        <!-- Blog Post 5 -->
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="imgs/img1.jpeg" alt="Hand Building">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-date">January 10, 2026</span>
-              <span class="blog-category">Techniques</span>
-            </div>
-            <h2 class="blog-title">Hand Building vs. Wheel Throwing</h2>
-            <p class="blog-excerpt">Explore the differences between hand building and wheel throwing techniques. Discover which method suits your creative style and learn when to use each approach.</p>
-            <a href="#" class="blog-read-more">Read More →</a>
-          </div>
-        </article>
-
-        <!-- Blog Post 6 -->
-        <article class="blog-card">
-          <div class="blog-image">
-            <img src="imgs/img2.jpeg" alt="Firing Process">
-          </div>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="blog-date">January 5, 2026</span>
-              <span class="blog-category">Firing</span>
-            </div>
-            <h2 class="blog-title">The Firing Process Explained</h2>
-            <p class="blog-excerpt">Understanding the kiln firing process is crucial for any potter. Learn about bisque firing, glaze firing, temperature control, and how firing affects your final pieces.</p>
-            <a href="#" class="blog-read-more">Read More →</a>
-          </div>
-        </article>
-      </div>
-
-      <!-- Pagination -->
-      <div class="pagination">
-        <button class="pagination-btn" disabled>Previous</button>
-        <button class="pagination-btn active">1</button>
-        <button class="pagination-btn">2</button>
-        <button class="pagination-btn">3</button>
-        <button class="pagination-btn">Next</button>
-      </div>
     </div>
   </main>
 
@@ -231,9 +129,14 @@
     </div>
   </footer>
 
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
   <script src="js/cart-utils.js"></script>
   <script src="js/wishlist-utils.js"></script>
   <script src="js/newsletter.js"></script>
   <script src="js/profile-dropdown.js"></script>
+  <script src="js/blog.js"></script>
 </body>
 </html>

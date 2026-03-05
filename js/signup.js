@@ -53,14 +53,29 @@ document.addEventListener('DOMContentLoaded', function () {
               role: role,
               createdAt: (typeof firebase !== 'undefined' && firebase.firestore && firebase.firestore.FieldValue) ? firebase.firestore.FieldValue.serverTimestamp() : new Date()
             };
+
+            // Update Firebase Auth displayName so header can say "Hello {name}"
+            var profilePromise = user && user.updateProfile
+              ? user.updateProfile({ displayName: fullName }).catch(function () {})
+              : Promise.resolve();
+
+            // Save basic profile locally for header/account pages
+            try {
+              localStorage.setItem('mumbaa_account_profile', JSON.stringify({
+                name: fullName,
+                email: email
+              }));
+            } catch (e) {}
+
+            var saveUserDocPromise = Promise.resolve();
             if (typeof db !== 'undefined' && db) {
-              return db.collection('users').doc(user.uid).set(userData).then(function() {
-                alert('Account created successfully! Welcome, ' + fullName + '!');
-                window.location.href = 'index.html';
-              });
+              saveUserDocPromise = db.collection('users').doc(user.uid).set(userData);
             }
-            alert('Account created successfully! Welcome, ' + fullName + '!');
-            window.location.href = 'index.html';
+
+            return Promise.all([profilePromise, saveUserDocPromise]).then(function () {
+              alert('Account created successfully! Welcome, ' + fullName + '!');
+              window.location.href = 'index.html';
+            });
           })
           .catch(function(error) {
             alert(error.message || 'Sign up failed. Please try again.');

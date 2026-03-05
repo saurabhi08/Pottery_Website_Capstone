@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/admin.css?v=1" />
 </head>
 <body>
   <header class="site-header">
@@ -13,13 +17,23 @@
         <div class="brand-logo-square"><img src="imgs/logo.png" alt="Mumbaa Ceramic Studio"></div>
         <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
       </div>
-      <nav class="main-nav">
-        <a href="products.html" class="nav-link">Shop</a>
-        <a href="admin.html" class="nav-link active">Admin</a>
-        <a href="account.html" class="nav-link">Profile</a>
-      </nav>
       <div class="header-right">
-        <button type="button" class="btn btn-outline" id="adminSignOut">Sign Out</button>
+        <a href="#" class="nav-link" id="adminNavBlog">Blog</a>
+        <a href="admin.html" class="nav-link active">Admin</a>
+        <div class="profile-dropdown" id="adminProfileDropdown">
+          <a href="#" class="icon-button profile-dropdown-trigger" id="adminProfileDropdownTrigger" aria-label="Profile">
+            <img src="imgs/profile.png" alt="Profile" width="24" height="24">
+          </a>
+          <div class="profile-dropdown-menu" id="adminProfileDropdownMenu">
+            <div class="profile-dropdown-greeting">Hello <strong id="adminProfileDropdownName">Admin</strong></div>
+            <div class="profile-dropdown-meta" id="adminProfileDropdownMeta">Admin account</div>
+            <a href="#" id="adminDropdownMyProfile">My profile</a>
+            <a href="#" id="adminDropdownChangePassword">Change password</a>
+            <a href="#" id="adminDropdownUpdateEmail">Update email</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="#" class="profile-dropdown-logout" id="adminProfileDropdownLogout">Logout</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -32,41 +46,441 @@
         <a href="index.html" class="btn btn-outline">Go Home</a>
       </div>
       <div class="admin-content" id="adminContent">
-        <h1 class="page-title">Admin Panel</h1>
+        <h1 class="page-title">Admin Dashboard</h1>
         <div class="admin-tabs">
-          <button type="button" class="admin-tab active" data-tab="products">Products</button>
+          <button type="button" class="admin-tab active" data-tab="dashboard">Dashboard</button>
+          <button type="button" class="admin-tab" data-tab="products">Products</button>
           <button type="button" class="admin-tab" data-tab="categories">Categories</button>
           <button type="button" class="admin-tab" data-tab="orders">Orders</button>
+          <button type="button" class="admin-tab" data-tab="payments">Payments</button>
+          <button type="button" class="admin-tab" data-tab="discounts">Discounts</button>
           <button type="button" class="admin-tab" data-tab="messages">Contact Messages</button>
+          <button type="button" class="admin-tab" data-tab="reviews">Reviews</button>
+          <button type="button" class="admin-tab" data-tab="profile">Profile</button>
         </div>
-        <div class="admin-panel" id="adminProducts">
+        <div class="admin-panel" id="adminDashboard">
+          <h2>Overview</h2>
+          <div class="admin-stats" id="adminStats">
+            <button type="button" class="admin-stat-card" data-tab="orders" aria-label="View orders">
+              <span class="admin-stat-value" id="statTotalOrders">–</span><span class="admin-stat-label">Total Orders</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="orders" aria-label="View pending orders">
+              <span class="admin-stat-value" id="statPendingOrders">–</span><span class="admin-stat-label">Pending Orders</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="products" aria-label="View products">
+              <span class="admin-stat-value" id="statTotalProducts">–</span><span class="admin-stat-label">Products</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="products" aria-label="View low stock products">
+              <span class="admin-stat-value" id="statLowStock">–</span><span class="admin-stat-label">Low Stock (≤5)</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="messages" aria-label="View contact messages">
+              <span class="admin-stat-value" id="statMessages">–</span><span class="admin-stat-label">Contact Messages</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="reviews" aria-label="View customer reviews">
+              <span class="admin-stat-value" id="statReviews">–</span><span class="admin-stat-label">Reviews</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="orders" aria-label="View orders revenue">
+              <span class="admin-stat-value" id="statTotalRevenue">–</span><span class="admin-stat-label">Total Revenue</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="orders" aria-label="View orders">
+              <span class="admin-stat-value" id="statRevenueThisMonth">–</span><span class="admin-stat-label">Revenue (This Month)</span>
+            </button>
+            <button type="button" class="admin-stat-card" data-tab="payments" aria-label="View payments">
+              <span class="admin-stat-value" id="statTransactions">–</span><span class="admin-stat-label">Transactions</span>
+            </button>
+          </div>
+          <section class="admin-revenue-section" aria-labelledby="adminRevenueReportTitle">
+            <h3 class="admin-low-stock-title" id="adminRevenueReportTitle">Revenue Report</h3>
+            <p class="admin-panel-desc">Download a detail report (purchases, product quantities, revenue by month) as Excel.</p>
+            <button type="button" class="btn btn-sm" id="adminDownloadDetailReport">Download detail report – purchases &amp; revenue (.xlsx)</button>
+          </section>
+          <section class="admin-low-stock-section" aria-labelledby="adminLowStockTitle">
+            <h3 class="admin-low-stock-title" id="adminLowStockTitle">Low Stock Products</h3>
+            <div class="admin-low-stock-list" id="adminLowStockList" role="list">
+              <p class="admin-empty">Loading…</p>
+            </div>
+          </section>
+        </div>
+        <div class="admin-panel" id="adminProducts" style="display: none;">
           <h2>Products</h2>
+          <p class="admin-panel-desc">Add, edit, or delete products. Set stock and availability. Import current website products to manage them here.</p>
           <button type="button" class="btn btn-sm" id="adminAddProduct">Add Product</button>
-          <div id="adminProductsList"></div>
+          <button type="button" class="btn btn-sm btn-outline" id="adminImportSiteProducts" style="margin-left: 0.5rem;">Import site products</button>
+          <div id="adminProductsList" class="admin-products-list"></div>
         </div>
         <div class="admin-panel" id="adminCategories" style="display: none;">
           <h2>Categories</h2>
+          <p class="admin-panel-desc">Categories used on the site (e.g. shop filters). Add new or seed the default site categories below.</p>
           <button type="button" class="btn btn-sm" id="adminAddCategory">Add Category</button>
+          <button type="button" class="btn btn-sm btn-outline" id="adminSeedCategories" style="margin-left: 0.5rem;">Add site categories (Mugs, Bowls, Plates, Jars, Ashtrays)</button>
           <div id="adminCategoriesList"></div>
         </div>
         <div class="admin-panel" id="adminOrders" style="display: none;">
           <h2>Orders</h2>
-          <div id="adminOrdersList"></div>
+          <div id="adminOrdersList" class="admin-orders-list"></div>
+        </div>
+        <div class="admin-panel" id="adminPayments" style="display: none;">
+          <h2>Payments</h2>
+          <section class="admin-payments-section" aria-labelledby="adminPaymentMethodsTitle">
+            <h3 class="admin-low-stock-title" id="adminPaymentMethodsTitle">Payment methods</h3>
+            <p class="admin-panel-desc">Enable or disable payment methods for checkout. Stripe is used for card payments; configure keys in Firebase Functions (see STRIPE_SETUP.md).</p>
+            <div class="admin-payment-methods" id="adminPaymentMethods">
+              <label class="admin-payment-method-row">
+                <input type="checkbox" id="adminPaymentStripe" checked>
+                <span>Stripe (card payments)</span>
+              </label>
+              <label class="admin-payment-method-row">
+                <input type="checkbox" id="adminPaymentPayPal" disabled>
+                <span>PayPal</span>
+                <em class="admin-payment-coming">(Coming soon)</em>
+              </label>
+            </div>
+            <p class="admin-form-status" id="adminPaymentMethodsStatus"></p>
+          </section>
+          <section class="admin-payments-section" aria-labelledby="adminTransactionsTitle">
+            <h3 class="admin-low-stock-title" id="adminTransactionsTitle">Transaction list</h3>
+            <div class="admin-transactions-wrap">
+              <div id="adminTransactionsList" class="admin-orders-list"></div>
+            </div>
+          </section>
+          <section class="admin-payments-section" aria-labelledby="adminRefundsTitle">
+            <h3 class="admin-low-stock-title" id="adminRefundsTitle">Refund management</h3>
+            <p class="admin-panel-desc">Update refund status for paid orders. For Stripe refunds, process via Stripe Dashboard or add a Cloud Function to issue refunds.</p>
+            <div class="admin-refunds-wrap">
+              <div id="adminRefundsList" class="admin-refunds-list"></div>
+            </div>
+          </section>
+        </div>
+        <div class="admin-panel" id="adminDiscounts" style="display: none;">
+          <h2>Discounts &amp; Promotions</h2>
+          <p class="admin-panel-desc">Create and manage coupon codes: percentage off, fixed amount off, or free shipping. Set minimum order value, expiry date, usage limits, and first-time buyers only.</p>
+          <button type="button" class="btn btn-sm" id="adminAddCoupon">Add coupon</button>
+          <div id="adminCouponsList" class="admin-coupons-list"></div>
         </div>
         <div class="admin-panel" id="adminMessages" style="display: none;">
           <h2>Contact Messages</h2>
-          <p class="admin-messages-intro">Messages from the contact form. No email setup needed &mdash; view them here when you log in.</p>
+          <p class="admin-messages-intro">Messages from the contact form. Use <strong>Reply</strong> to email the customer via EmailJS.</p>
           <div id="adminMessagesList"></div>
+        </div>
+        <div class="admin-panel" id="adminReviews" style="display: none;">
+          <h2>Customer Reviews</h2>
+          <p class="admin-panel-desc">Reviews posted by customers from their order history (rating and optional text per product).</p>
+          <div id="adminReviewsList" class="admin-reviews-list"></div>
+        </div>
+        <div class="admin-panel" id="adminBlog" style="display: none;">
+          <h2>Blog</h2>
+          <p class="admin-panel-desc">Manage blog posts shown on your site. Create drafts, publish posts, and keep content up to date.</p>
+          <div class="admin-blog-toolbar">
+            <div class="admin-blog-search">
+              <input type="search" id="adminBlogSearch" placeholder="Search by title">
+            </div>
+            <div class="admin-blog-filter">
+              <label for="adminBlogFilterCategory">Category</label>
+              <select id="adminBlogFilterCategory">
+                <option value="">All categories</option>
+              </select>
+            </div>
+            <div class="admin-blog-filter">
+              <label for="adminBlogFilterStatus">Status</label>
+              <select id="adminBlogFilterStatus">
+                <option value="">All status</option>
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+              </select>
+            </div>
+            <div class="admin-blog-filter">
+              <label for="adminBlogSort">Sort</label>
+              <select id="adminBlogSort">
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-sm" id="adminAddBlogPost">Add post</button>
+          </div>
+          <div id="adminBlogList" class="admin-blog-list"></div>
+        </div>
+        <div class="admin-panel" id="adminProfile" style="display: none;">
+          <h2>Admin Profile</h2>
+          <div class="admin-profile-card" id="adminProfileCard">
+            <p class="admin-profile-loading" id="adminProfileLoading">Loading…</p>
+            <dl class="admin-profile-dl" id="adminProfileDl" style="display: none;">
+              <div class="admin-profile-row">
+                <dt>Name</dt>
+                <dd>
+                  <span class="admin-profile-name-value" id="adminProfileNameValue"></span>
+                  <button type="button" class="btn btn-sm admin-profile-edit-btn" id="adminProfileEditNameBtn">Edit name</button>
+                </dd>
+              </div>
+              <div class="admin-profile-edit-row" id="adminProfileEditNameRow" style="display: none;">
+                <dt></dt>
+                <dd>
+                  <input type="text" id="adminProfileNameInput" placeholder="Your name" class="admin-profile-input">
+                  <button type="button" class="btn btn-sm" id="adminProfileNameSave">Save</button>
+                  <button type="button" class="btn btn-outline btn-sm" id="adminProfileNameCancel">Cancel</button>
+                </dd>
+              </div>
+              <div class="admin-profile-row">
+                <dt>Email</dt>
+                <dd id="adminProfileEmail" class="admin-profile-readonly"></dd>
+              </div>
+              <div class="admin-profile-row">
+                <dt>Role</dt>
+                <dd>Admin</dd>
+              </div>
+              <div class="admin-profile-row">
+                <dt>Member Since</dt>
+                <dd id="adminProfileMemberSince" class="admin-profile-readonly"></dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
+  <!-- Product add/edit modal -->
+  <div class="admin-product-modal admin-reply-modal" id="adminProductModal" aria-hidden="true">
+    <div class="admin-reply-modal-backdrop" id="adminProductModalBackdrop"></div>
+    <div class="admin-reply-modal-box admin-product-modal-box" role="dialog" aria-labelledby="adminProductModalTitle">
+      <h3 class="admin-reply-modal-title" id="adminProductModalTitle">Edit Product</h3>
+      <form id="adminProductForm" class="admin-reply-form">
+        <div class="form-group">
+          <label for="adminProductName">Product name</label>
+          <input type="text" id="adminProductName" required placeholder="e.g. Artisan Coffee Mug">
+        </div>
+        <div class="form-group">
+          <label for="adminProductImage">Image URL</label>
+          <input type="text" id="adminProductImage" placeholder="e.g. imgs/img1.jpeg">
+          <p class="admin-form-hint">Main product image. Use a path like imgs/img1.jpeg or a full URL.</p>
+        </div>
+        <div class="form-group">
+          <label for="adminProductDescription">Short description</label>
+          <input type="text" id="adminProductDescription" placeholder="e.g. Matte finish, 300 ml">
+        </div>
+        <div class="form-group">
+          <label for="adminProductDetails">Product details (one per line)</label>
+          <textarea id="adminProductDetails" rows="4" placeholder="Handcrafted from premium stoneware&#10;Microwave and dishwasher safe&#10;Each piece is unique with slight variations&#10;Made in Malvan, India"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adminProductPrice">Price (₹)</label>
+            <input type="number" id="adminProductPrice" min="0" step="1" required placeholder="1100">
+          </div>
+          <div class="form-group">
+            <label for="adminProductStock">Stock</label>
+            <input type="number" id="adminProductStock" min="0" step="1" required placeholder="10">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="adminProductCategory">Category ID</label>
+          <input type="text" id="adminProductCategory" placeholder="e.g. mugs, bowls">
+        </div>
+        <div class="admin-reply-modal-actions">
+          <button type="button" class="btn btn-outline" id="adminProductCancel">Cancel</button>
+          <button type="submit" class="btn btn-sm" id="adminProductSave">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Change password modal -->
+  <div class="admin-reply-modal" id="adminChangePasswordModal" aria-hidden="true">
+    <div class="admin-reply-modal-backdrop" id="adminChangePasswordModalBackdrop"></div>
+    <div class="admin-reply-modal-box" role="dialog" aria-labelledby="adminChangePasswordModalTitle">
+      <h3 class="admin-reply-modal-title" id="adminChangePasswordModalTitle">Change password</h3>
+      <form id="adminChangePasswordForm" class="admin-reply-form">
+        <div class="form-group">
+          <label for="adminChangePasswordCurrent">Current password</label>
+          <input type="password" id="adminChangePasswordCurrent" required autocomplete="current-password">
+        </div>
+        <div class="form-group">
+          <label for="adminChangePasswordNew">New password</label>
+          <input type="password" id="adminChangePasswordNew" required minlength="6" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="adminChangePasswordConfirm">Confirm new password</label>
+          <input type="password" id="adminChangePasswordConfirm" required minlength="6" autocomplete="new-password">
+        </div>
+        <p class="admin-form-status" id="adminChangePasswordStatus"></p>
+        <div class="admin-reply-modal-actions">
+          <button type="button" class="btn btn-outline" id="adminChangePasswordCancel">Cancel</button>
+          <button type="submit" class="btn btn-sm">Update password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Update email modal -->
+  <div class="admin-reply-modal" id="adminUpdateEmailModal" aria-hidden="true">
+    <div class="admin-reply-modal-backdrop" id="adminUpdateEmailModalBackdrop"></div>
+    <div class="admin-reply-modal-box" role="dialog" aria-labelledby="adminUpdateEmailModalTitle">
+      <h3 class="admin-reply-modal-title" id="adminUpdateEmailModalTitle">Update email</h3>
+      <form id="adminUpdateEmailForm" class="admin-reply-form">
+        <div class="form-group">
+          <label for="adminUpdateEmailNew">New email</label>
+          <input type="email" id="adminUpdateEmailNew" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="adminUpdateEmailPassword">Current password</label>
+          <input type="password" id="adminUpdateEmailPassword" required autocomplete="current-password">
+        </div>
+        <p class="admin-form-status" id="adminUpdateEmailStatus"></p>
+        <div class="admin-reply-modal-actions">
+          <button type="button" class="btn btn-outline" id="adminUpdateEmailCancel">Cancel</button>
+          <button type="submit" class="btn btn-sm">Update email</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Reply to customer modal -->
+  <div class="admin-reply-modal" id="adminReplyModal" aria-hidden="true">
+    <div class="admin-reply-modal-backdrop" id="adminReplyModalBackdrop"></div>
+    <div class="admin-reply-modal-box" role="dialog" aria-labelledby="adminReplyModalTitle">
+      <h3 class="admin-reply-modal-title" id="adminReplyModalTitle">Reply to customer</h3>
+      <form id="adminReplyForm" class="admin-reply-form">
+        <div class="form-group">
+          <label for="adminReplyTo">To</label>
+          <input type="email" id="adminReplyTo" readonly class="admin-reply-to-input">
+        </div>
+        <div class="form-group">
+          <label for="adminReplySubject">Subject</label>
+          <input type="text" id="adminReplySubject" required placeholder="Re: ...">
+        </div>
+        <div class="form-group">
+          <label for="adminReplyMessage">Message</label>
+          <textarea id="adminReplyMessage" rows="6" required placeholder="Type your reply..."></textarea>
+        </div>
+        <div class="admin-reply-modal-actions">
+          <button type="button" class="btn btn-outline" id="adminReplyCancel">Cancel</button>
+          <button type="submit" class="btn btn-sm" id="adminReplySend">Send reply</button>
+        </div>
+      </form>
+      <p class="admin-reply-status" id="adminReplyStatus" style="display: none;"></p>
+    </div>
+  </div>
+
+  <!-- Coupon add/edit modal -->
+  <div class="admin-reply-modal" id="adminCouponModal" aria-hidden="true">
+    <div class="admin-reply-modal-backdrop" id="adminCouponModalBackdrop"></div>
+    <div class="admin-reply-modal-box admin-product-modal-box" role="dialog" aria-labelledby="adminCouponModalTitle">
+      <h3 class="admin-reply-modal-title" id="adminCouponModalTitle">Add coupon</h3>
+      <form id="adminCouponForm" class="admin-reply-form">
+        <div class="form-group">
+          <label for="adminCouponCode">Code</label>
+          <input type="text" id="adminCouponCode" required placeholder="e.g. SAVE10" pattern="[A-Za-z0-9_-]+" title="Letters, numbers, underscore, hyphen only">
+          <p class="admin-form-hint">Customers enter this at checkout. Stored in lowercase.</p>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adminCouponType">Discount type</label>
+            <select id="adminCouponType">
+              <option value="percent">Percentage off</option>
+              <option value="fixed">Fixed amount off (₹)</option>
+              <option value="free_shipping">Free shipping</option>
+            </select>
+          </div>
+          <div class="form-group" id="adminCouponValueWrap">
+            <label for="adminCouponValue">Value</label>
+            <input type="number" id="adminCouponValue" min="0" step="1" placeholder="10">
+            <p class="admin-form-hint" id="adminCouponValueHint">Percent (1–100) or amount in ₹. Ignored for free shipping.</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adminCouponMinOrder">Minimum order (₹)</label>
+            <input type="number" id="adminCouponMinOrder" min="0" step="1" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="adminCouponExpiry">Expiry date</label>
+            <input type="date" id="adminCouponExpiry" placeholder="Leave empty for no expiry">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adminCouponUsageLimit">Usage limit (total)</label>
+            <input type="number" id="adminCouponUsageLimit" min="0" step="1" placeholder="0 = unlimited">
+          </div>
+          <div class="form-group admin-coupon-first-time-wrap">
+            <label class="admin-coupon-checkbox-label">
+              <input type="checkbox" id="adminCouponFirstTimeOnly">
+              First-time buyers only
+            </label>
+          </div>
+        </div>
+        <p class="admin-form-status" id="adminCouponFormStatus"></p>
+        <div class="admin-reply-modal-actions">
+          <button type="button" class="btn btn-outline" id="adminCouponCancel">Cancel</button>
+          <button type="submit" class="btn btn-sm" id="adminCouponSave">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Blog post add/edit modal -->
+  <div class="admin-reply-modal" id="adminBlogPostModal" aria-hidden="true">
+    <div class="admin-reply-modal-backdrop" id="adminBlogPostModalBackdrop"></div>
+    <div class="admin-reply-modal-box admin-product-modal-box" role="dialog" aria-labelledby="adminBlogPostModalTitle">
+      <h3 class="admin-reply-modal-title" id="adminBlogPostModalTitle">Add post</h3>
+      <form id="adminBlogPostForm" class="admin-reply-form">
+        <div class="form-group">
+          <label for="adminBlogPostTitle">Title</label>
+          <input type="text" id="adminBlogPostTitle" required placeholder="Post title">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adminBlogPostCategory">Category</label>
+            <input type="text" id="adminBlogPostCategory" placeholder="e.g. Techniques, Glazing" list="adminBlogCategoryList">
+            <datalist id="adminBlogCategoryList"></datalist>
+          </div>
+          <div class="form-group">
+            <label for="adminBlogPostAuthor">Author (optional)</label>
+            <input type="text" id="adminBlogPostAuthor" placeholder="Author name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adminBlogPostStatus">Status</label>
+            <select id="adminBlogPostStatus">
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="adminBlogPostPublishDate">Publish date</label>
+            <input type="date" id="adminBlogPostPublishDate">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="adminBlogPostThumbnail">Thumbnail URL</label>
+          <input type="text" id="adminBlogPostThumbnail" placeholder="e.g. imgs/img1.jpeg">
+        </div>
+        <div class="form-group">
+          <label for="adminBlogPostExcerpt">Excerpt</label>
+          <textarea id="adminBlogPostExcerpt" rows="3" placeholder="Short summary for the list view"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="adminBlogPostContent">Content (optional)</label>
+          <textarea id="adminBlogPostContent" rows="6" placeholder="Full post body (HTML or plain text)"></textarea>
+        </div>
+        <p class="admin-form-status" id="adminBlogPostFormStatus"></p>
+        <div class="admin-reply-modal-actions">
+          <button type="button" class="btn btn-outline" id="adminBlogPostCancel">Cancel</button>
+          <button type="submit" class="btn btn-sm" id="adminBlogPostSave">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="js/firebase-config.js"></script>
+  <script src="js/emailjs-config.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/firestore-service.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

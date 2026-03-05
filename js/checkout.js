@@ -28,7 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var subtotal = cart.reduce(function (sum, i) { return sum + i.price * i.quantity; }, 0);
     var shipping = subtotal >= 2000 ? 0 : 150;
-    var discount = appliedCoupon ? (appliedCoupon.type === 'percent' ? subtotal * (appliedCoupon.value / 100) : Math.min(appliedCoupon.value, subtotal)) : 0;
+    var discount = 0;
+    if (appliedCoupon) {
+      if (appliedCoupon.type === 'percent') {
+        discount = subtotal * (appliedCoupon.value / 100);
+      } else if (appliedCoupon.type === 'fixed') {
+        discount = Math.min(appliedCoupon.value, subtotal);
+      } else if (appliedCoupon.type === 'free_shipping') {
+        discount = shipping;
+      }
+    }
     var total = Math.max(0, subtotal + shipping - discount);
 
     if (checkoutItems) {
@@ -55,14 +64,59 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if (typeof firestoreService !== 'undefined' && firestoreService.getCoupon) {
         firestoreService.getCoupon(code).then(function (c) {
-          if (c) {
-            appliedCoupon = c;
-            if (couponMsg) couponMsg.textContent = 'Coupon applied.';
-            renderSummary();
-          } else {
+          if (!c) {
             appliedCoupon = null;
             if (couponMsg) couponMsg.textContent = 'Invalid coupon.';
+            return;
           }
+          var subtotal = 0;
+          var cart = typeof getCart === 'function' ? getCart() : [];
+          if (cart.length) subtotal = cart.reduce(function (s, i) { return s + i.price * i.quantity; }, 0);
+          if (c.minOrderValue && subtotal < c.minOrderValue) {
+            appliedCoupon = null;
+            if (couponMsg) couponMsg.textContent = 'Minimum order for this coupon is ₹' + c.minOrderValue + '.';
+            return;
+          }
+          if (c.expiryDate && c.expiryDate.toDate) {
+            if (c.expiryDate.toDate() < new Date()) {
+              appliedCoupon = null;
+              if (couponMsg) couponMsg.textContent = 'This coupon has expired.';
+              return;
+            }
+          }
+          var used = typeof c.usedCount === 'number' ? c.usedCount : 0;
+          var limit = typeof c.usageLimit === 'number' ? c.usageLimit : 0;
+          if (limit > 0 && used >= limit) {
+            appliedCoupon = null;
+            if (couponMsg) couponMsg.textContent = 'This coupon has reached its usage limit.';
+            return;
+          }
+          if (c.firstTimeOnly) {
+            var userId = (typeof auth !== 'undefined' && auth && auth.currentUser && auth.currentUser.uid) || (typeof getCurrentUser === 'function' && getCurrentUser() && getCurrentUser().uid);
+            var email = (document.getElementById('co-email') && document.getElementById('co-email').value.trim()) || (typeof auth !== 'undefined' && auth && auth.currentUser && auth.currentUser.email) || '';
+            var checkOrders = userId && firestoreService.getOrdersByUser
+              ? firestoreService.getOrdersByUser(userId)
+              : (email && firestoreService.getOrdersByUserEmail ? firestoreService.getOrdersByUserEmail(email) : Promise.resolve([]));
+            checkOrders.then(function (orders) {
+              if (orders && orders.length > 0) {
+                appliedCoupon = null;
+                if (couponMsg) couponMsg.textContent = 'This coupon is for first-time buyers only.';
+                renderSummary();
+              } else {
+                appliedCoupon = c;
+                if (couponMsg) couponMsg.textContent = 'Coupon applied.';
+                renderSummary();
+              }
+            }).catch(function () {
+              appliedCoupon = c;
+              if (couponMsg) couponMsg.textContent = 'Coupon applied.';
+              renderSummary();
+            });
+            return;
+          }
+          appliedCoupon = c;
+          if (couponMsg) couponMsg.textContent = 'Coupon applied.';
+          renderSummary();
         });
       } else {
         if (couponMsg) couponMsg.textContent = 'Coupons require Firebase.';
@@ -91,7 +145,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       var subtotal = cart.reduce(function (s, i) { return s + i.price * i.quantity; }, 0);
       var shipping = subtotal >= 2000 ? 0 : 150;
-      var discount = appliedCoupon ? (appliedCoupon.type === 'percent' ? subtotal * (appliedCoupon.value / 100) : Math.min(appliedCoupon.value, subtotal)) : 0;
+      var discount = 0;
+      if (appliedCoupon) {
+        if (appliedCoupon.type === 'percent') discount = subtotal * (appliedCoupon.value / 100);
+        else if (appliedCoupon.type === 'fixed') discount = Math.min(appliedCoupon.value, subtotal);
+        else if (appliedCoupon.type === 'free_shipping') discount = shipping;
+      }
       var total = Math.max(0, subtotal + shipping - discount);
 
       var orderData = {
@@ -104,7 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
         shippingCost: shipping,
         discount: discount,
         total: total,
-        couponCode: appliedCoupon ? appliedCoupon.code : null
+        couponCode: appliedCoupon ? appliedCoupon.code : null,
+        giftNote: (document.getElementById('co-gift-note') && document.getElementById('co-gift-note').value.trim()) || null
       };
       // Use signed-in user at submit time so order is always linked to your account
       if (typeof auth !== 'undefined' && auth && auth.currentUser) {
@@ -131,6 +191,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (typeof firestoreService !== 'undefined' && firestoreService.createOrder) {
         firestoreService.createOrder(orderData)
           .then(function (orderId) {
+            if (appliedCoupon && appliedCoupon.id && typeof firestoreService.incrementCouponUsed === 'function') {
+              firestoreService.incrementCouponUsed(appliedCoupon.id).catch(function () {});
+            }
             saveLocalOrder(orderData, orderId);
             var amountPaise = Math.round(total * 100);
             var successUrl = window.location.origin + window.location.pathname.replace('checkout.html', '') + 'confirmation.html?orderId=' + encodeURIComponent(orderId);
@@ -142,7 +205,38 @@ document.addEventListener('DOMContentLoaded', function () {
               }
               window.location.href = 'confirmation.html?orderId=' + encodeURIComponent(orderId);
             }
-            if (typeof firebase !== 'undefined' && firebase.functions && amountPaise >= 100) {
+            var useStripe = typeof firebase !== 'undefined' && firebase.functions && amountPaise >= 100;
+            if (useStripe && typeof firestoreService !== 'undefined' && firestoreService.getPaymentSettings) {
+              firestoreService.getPaymentSettings().then(function (settings) {
+                if (settings.stripeEnabled === false) {
+                  goToConfirmation();
+                  return;
+                }
+                var createCheckout = firebase.functions().httpsCallable('createStripeCheckoutSession');
+                createCheckout({
+                  orderId: orderId,
+                  amountPaise: amountPaise,
+                  currency: 'inr',
+                  customerEmail: email,
+                  successUrl: successUrl,
+                  cancelUrl: cancelUrl
+                }).then(function (result) {
+                  if (result && result.data && result.data.url) {
+                    if (typeof firestoreService !== 'undefined' && firestoreService.updateOrderStatus) {
+                      firestoreService.updateOrderStatus(orderId, 'pending_payment').catch(function () {});
+                    }
+                    window.location.href = result.data.url;
+                  } else {
+                    goToConfirmation();
+                  }
+                }).catch(function (err) {
+                  console.warn('Stripe checkout not available:', err && err.message);
+                  goToConfirmation();
+                });
+              }).catch(function () {
+                goToConfirmation();
+              });
+            } else if (useStripe) {
               var createCheckout = firebase.functions().httpsCallable('createStripeCheckoutSession');
               createCheckout({
                 orderId: orderId,
@@ -182,6 +276,40 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   renderSummary();
+
+  // Load and show active coupon offers from admin (customer-side reflection)
+  (function loadCheckoutOffers() {
+    var container = document.getElementById('checkoutOffers');
+    if (!container || typeof firestoreService === 'undefined' || !firestoreService.getActiveCouponsForDisplay) return;
+    firestoreService.getActiveCouponsForDisplay().then(function (offers) {
+      if (!offers || offers.length === 0) return;
+      var couponInput = document.getElementById('co-coupon');
+      var applyBtn = document.getElementById('applyCouponBtn');
+      container.innerHTML = '<p class="checkout-offers-title">Current offers:</p><ul class="checkout-offers-list">' +
+        offers.map(function (o) {
+          return '<li><button type="button" class="checkout-offer-code" data-code="' + String(o.code).replace(/"/g, '&quot;') + '">' + String(o.code).replace(/</g, '&lt;') + '</button> — ' + String(o.label).replace(/</g, '&lt;') + '</li>';
+        }).join('') + '</ul>';
+      container.querySelectorAll('.checkout-offer-code').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var code = btn.getAttribute('data-code');
+          if (couponInput) couponInput.value = code;
+          if (applyBtn) applyBtn.click();
+        });
+      });
+    });
+  })();
+
+  // Gift note character count
+  var giftNoteEl = document.getElementById('co-gift-note');
+  var giftNoteCountEl = document.getElementById('coGiftNoteCount');
+  if (giftNoteEl && giftNoteCountEl) {
+    function updateGiftNoteCount() {
+      giftNoteCountEl.textContent = (giftNoteEl.value.length || 0) + '/500';
+    }
+    giftNoteEl.addEventListener('input', updateGiftNoteCount);
+    giftNoteEl.addEventListener('paste', function () { setTimeout(updateGiftNoteCount, 0); });
+    updateGiftNoteCount();
+  }
 
   // Pre-fill checkout with logged-in user so order gets correct userId and userEmail
   function prefillFromUser(user) {

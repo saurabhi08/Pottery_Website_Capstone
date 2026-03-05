@@ -32,16 +32,21 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (typeof db !== 'undefined' && db) {
-        db.collection('contact_messages').add({
+        var payload = {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
-          phone: formData.phone,
+          phone: formData.phone || '',
           subject: formData.subject,
           message: formData.message,
-          submittedAt: new Date(),
           read: false
-        })
+        };
+        if (typeof firebase !== 'undefined' && firebase.firestore && firebase.firestore.FieldValue && firebase.firestore.FieldValue.serverTimestamp) {
+          payload.submittedAt = firebase.firestore.FieldValue.serverTimestamp();
+        } else {
+          payload.submittedAt = new Date();
+        }
+        db.collection('contact_messages').add(payload)
           .then(function () {
             alert('Thank you for your message! We will get back to you soon.');
             contactForm.reset();

@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -14,9 +15,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="header-left">
-        <div class="brand-logo-square">
-          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
-        </div>
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
         <span class="brand-text">mumbaaceramicstudio</span>
       </div>
 
@@ -92,9 +95,10 @@
       </div>
 
       <div class="container">
-        <div class="bestsellers-scroll-wrap">
-          <div class="bestsellers-scroll">
+        <div class="swiper bestsellers-swiper">
+          <div class="swiper-wrapper">
             <!-- Card 1 -->
+            <div class="swiper-slide">
         <article class="product-card" data-product-id="13" data-product-name="Latte Coffee Mug" data-product-desc="Handcrafted stoneware mug" data-product-price="1250" data-product-image="imgs/img1.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img1.jpeg" alt="Latte Coffee Mug"></div>
           <div class="product-body">
@@ -118,8 +122,9 @@
             </div>
           </div>
         </article>
-
+            </div>
         <!-- Card 2 -->
+            <div class="swiper-slide">
         <article class="product-card" data-product-id="14" data-product-name="Ocean Glaze Bowl" data-product-desc="Wheel-thrown serving bowl" data-product-price="1100" data-product-image="imgs/img2.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img2.jpeg" alt="Ocean Glaze Bowl"></div>
           <div class="product-body">
@@ -142,8 +147,9 @@
             </div>
           </div>
         </article>
-
+            </div>
         <!-- Card 3 -->
+            <div class="swiper-slide">
         <article class="product-card" data-product-id="15" data-product-name="Ocean Glaze Bowl" data-product-desc="Wheel-thrown serving bowl" data-product-price="1100" data-product-image="imgs/img2.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img2.jpeg" alt="Ocean Glaze Bowl"></div>
           <div class="product-body">
@@ -166,8 +172,9 @@
             </div>
           </div>
         </article>
-
+            </div>
         <!-- Card 4 -->
+            <div class="swiper-slide">
         <article class="product-card" data-product-id="16" data-product-name="Artisan Coffee Mug" data-product-desc="Matte finish, 300 ml" data-product-price="1100" data-product-image="imgs/img1.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img1.jpeg" alt="Artisan Coffee Mug"></div>
           <div class="product-body">
@@ -190,8 +197,9 @@
             </div>
           </div>
         </article>
-
+            </div>
         <!-- Card 5 -->
+            <div class="swiper-slide">
         <article class="product-card" data-product-id="17" data-product-name="Minimal White Cup" data-product-desc="Porcelain, 220 ml" data-product-price="950" data-product-image="imgs/img2.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img2.jpeg" alt="Minimal White Cup"></div>
           <div class="product-body">
@@ -214,8 +222,9 @@
             </div>
           </div>
         </article>
-
+            </div>
         <!-- Card 6 -->
+            <div class="swiper-slide">
         <article class="product-card" data-product-id="18" data-product-name="Speckled Mug" data-product-desc="Hand-painted rim" data-product-price="1050" data-product-image="imgs/img3.jpeg">
           <div class="product-media product-media--tall"><img src="imgs/img3.jpeg" alt="Speckled Mug"></div>
           <div class="product-body">
@@ -238,7 +247,11 @@
             </div>
           </div>
         </article>
-        </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
 
@@ -441,7 +454,6 @@
           <h4>Quick Links</h4>
           <a href="index.html">Home</a>
           <a href="products.html">Shop</a>
-          <a href="blog.html">Blog</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
           <a href="shipping-returns.html">Shipping &amp; Returns</a>
@@ -464,6 +476,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -475,6 +488,27 @@
   <script src="js/wishlist-utils.js"></script>
   <script src="js/newsletter.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.bestsellers-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          loop: true,
+          pagination: { el: '.bestsellers-swiper .swiper-pagination', clickable: true },
+          navigation: {
+            nextEl: '.bestsellers-swiper .swiper-button-next',
+            prevEl: '.bestsellers-swiper .swiper-button-prev'
+          },
+          breakpoints: {
+            480: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
 

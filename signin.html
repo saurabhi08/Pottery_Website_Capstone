@@ -14,9 +14,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="header-left">
-        <div class="brand-logo-square">
-          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
-        </div>
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
         <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
       </div>
 
@@ -69,6 +71,7 @@
     <div class="auth-card">
       <h1 class="auth-title">Welcome Back</h1>
       <p class="auth-subtitle">Sign in to your account to continue</p>
+      <p class="auth-admin-hint" id="authAdminHint" style="display: none;">Use your admin email and password to access the admin panel.</p>
 
       <form class="auth-form" id="signInForm">
         <div class="auth-form-group">
@@ -148,10 +151,18 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/auth-state.js"></script>
   <script src="js/cart-utils.js"></script>
   <script src="js/wishlist-utils.js"></script>
   <script src="js/newsletter.js"></script>
   <script src="js/profile-dropdown.js"></script>
   <script src="js/signin.js"></script>
+  <script>
+    (function() {
+      var redirect = window.location.search.indexOf('redirect=admin') !== -1;
+      var hint = document.getElementById('authAdminHint');
+      if (redirect && hint) hint.style.display = 'block';
+    })();
+  </script>
 </body>
 </html>

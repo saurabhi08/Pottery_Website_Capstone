@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saved Cards - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="profile-dropdown">
+          <a href="#" class="icon-button profile-dropdown-trigger" id="profileDropdownTrigger" aria-label="Profile">
+            <img src="imgs/profile.png" alt="Profile" width="24" height="24">
+          </a>
+          <div class="profile-dropdown-menu" id="profileDropdownMenu">
+            <div class="profile-dropdown-greeting">Hello <strong id="profileDropdownName">Guest</strong></div>
+            <div class="profile-dropdown-meta" id="profileDropdownMeta">Sign in to save your details</div>
+            <a href="account.html#orders">Orders</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="contact.html">Help</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#coupons">Coupons</a>
+            <a href="saved-cards.html">Saved Cards</a>
+            <a href="saved-address.html">Saved Address</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="edit-profile.html">Edit Profile</a>
+            <a href="#" class="profile-dropdown-logout" id="profileDropdownLogout">Logout</a>
+          </div>
+        </div>
+        <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="signin.html" class="btn btn-signup">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="account-page">
+    <div class="container">
+      <div class="account-layout">
+        <section class="account-content" style="margin-left:0;">
+          <div class="account-card">
+            <div class="account-card-header">
+              <h3>Saved cards</h3>
+              <button type="button" class="btn btn-outline" id="addCardBtn">Add new card</button>
+            </div>
+
+            <div class="account-empty-state" id="cardsEmpty">
+              <p class="account-empty-message">You have not saved any cards yet.</p>
+            </div>
+
+            <div class="saved-cards-list" id="cardsList" style="display:none;"></div>
+
+            <form id="cardForm" class="saved-card-form" style="display:none; margin-top:1.5rem;">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="card-name">Name on card</label>
+                  <input type="text" id="card-name" required placeholder="Saurabhi Surve" />
+                </div>
+                <div class="form-field">
+                  <label for="card-number">Card number</label>
+                  <input type="text" id="card-number" maxlength="19" inputmode="numeric" required placeholder="**** **** **** 1234" />
+                </div>
+                <div class="form-field">
+                  <label for="card-expiry">Expiry</label>
+                  <input type="text" id="card-expiry" maxlength="7" placeholder="MM/YYYY" required />
+                </div>
+                <div class="form-field">
+                  <label for="card-label">Label</label>
+                  <input type="text" id="card-label" placeholder="Personal / Work" />
+                </div>
+              </div>
+              <div class="form-actions" style="margin-top:1rem; display:flex; gap:0.75rem;">
+                <button type="button" class="btn btn-outline" id="cancelCardBtn">Cancel</button>
+                <button type="submit" class="auth-btn">Save card</button>
+              </div>
+              <p class="form-helper-text" style="margin-top:0.75rem; font-size:0.85rem; color:var(--color-text-muted);">
+                We only store the last 4 digits and card label for your convenience.
+              </p>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="shipping-returns.html">Shipping &amp; Returns</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/profile-dropdown.js"></script>
+  <script src="js/cart-utils.js"></script>
+  <script src="js/wishlist-utils.js"></script>
+  <script>
+    (function () {
+      var CARDS_KEY = 'mumbaa_saved_cards';
+
+      function getCards() {
+        try {
+          var raw = localStorage.getItem(CARDS_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function saveCards(cards) {
+        try {
+          localStorage.setItem(CARDS_KEY, JSON.stringify(cards));
+        } catch (e) {}
+      }
+
+      function maskCardNumber(num) {
+        if (!num) return '**** **** **** ****';
+        var digits = String(num).replace(/\D/g, '');
+        if (digits.length < 4) return '**** **** **** ' + digits;
+        var last4 = digits.slice(-4);
+        return '**** **** **** ' + last4;
+      }
+
+      function renderCards() {
+        var cards = getCards();
+        var empty = document.getElementById('cardsEmpty');
+        var list = document.getElementById('cardsList');
+        if (!list) return;
+        if (!cards.length) {
+          if (empty) empty.style.display = 'block';
+          list.style.display = 'none';
+          list.innerHTML = '';
+          return;
+        }
+        if (empty) empty.style.display = 'none';
+        list.style.display = 'flex';
+        list.innerHTML = cards
+          .map(function (card, index) {
+            var label = card.label || 'Card';
+            var name = card.name || '';
+            var masked = maskCardNumber(card.last4 || card.number);
+            var expiry = card.expiry || '';
+            return (
+              '<div class="saved-card-item" data-index="' + index + '">' +
+                '<div class="saved-card-main">' +
+                  '<div class="saved-card-label">' + label + '</div>' +
+                  '<div class="saved-card-number">' + masked + '</div>' +
+                  (name ? '<div class="saved-card-name">' + name + '</div>' : '') +
+                  (expiry ? '<div class="saved-card-expiry">Expiry: ' + expiry + '</div>' : '') +
+                '</div>' +
+                '<button type="button" class="btn btn-sm btn-outline remove-card-btn" data-index="' + index + '">Remove</button>' +
+              '</div>'
+            );
+          })
+          .join('');
+
+        list.querySelectorAll('.remove-card-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var idx = parseInt(btn.getAttribute('data-index'), 10);
+            var c = getCards();
+            c.splice(idx, 1);
+            saveCards(c);
+            renderCards();
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var addBtn = document.getElementById('addCardBtn');
+        var cancelBtn = document.getElementById('cancelCardBtn');
+        var form = document.getElementById('cardForm');
+
+        if (addBtn && form) {
+          addBtn.addEventListener('click', function () {
+            form.style.display = 'block';
+          });
+        }
+        if (cancelBtn && form) {
+          cancelBtn.addEventListener('click', function () {
+            form.reset();
+            form.style.display = 'none';
+          });
+        }
+        if (form) {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('card-name').value.trim();
+            var number = document.getElementById('card-number').value.replace(/\s+/g, '');
+            var expiry = document.getElementById('card-expiry').value.trim();
+            var label = document.getElementById('card-label').value.trim();
+            if (!name || !number || !expiry) {
+              alert('Please fill in required fields.');
+              return;
+            }
+            var digits = number.replace(/\D/g, '');
+            if (digits.length < 4) {
+              alert('Please enter a valid card number.');
+              return;
+            }
+            var cards = getCards();
+            cards.push({
+              name: name,
+              last4: digits.slice(-4),
+              expiry: expiry,
+              label: label || 'Card'
+            });
+            saveCards(cards);
+            form.reset();
+            form.style.display = 'none';
+            renderCards();
+            alert('Card saved.');
+          });
+        }
+
+        // Seed a fake saved card for now if none exist
+        if (!getCards().length) {
+          saveCards([{
+            name: 'Saurabhi Surve',
+            last4: '1234',
+            expiry: '12/2030',
+            label: 'Personal'
+          }]);
+        }
+
+        renderCards();
+      });
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile - Mumbaa Ceramic Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
+        <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
+      </div>
+
+      <nav class="main-nav">
+        <a href="products.html" class="nav-link">Shop</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="profile-dropdown">
+          <a href="#" class="icon-button profile-dropdown-trigger" id="profileDropdownTrigger" aria-label="Profile">
+            <img src="imgs/profile.png" alt="Profile" width="24" height="24">
+          </a>
+          <div class="profile-dropdown-menu" id="profileDropdownMenu">
+            <div class="profile-dropdown-greeting">Hello <strong id="profileDropdownName">Guest</strong></div>
+            <div class="profile-dropdown-meta" id="profileDropdownMeta">Sign in to save your details</div>
+            <a href="account.html#orders">Orders</a>
+            <a href="wishlist.html">Wishlist</a>
+            <a href="contact.html">Help</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="account.html#coupons">Coupons</a>
+            <a href="saved-cards.html">Saved Cards</a>
+            <a href="saved-address.html">Saved Address</a>
+            <div class="profile-dropdown-divider"></div>
+            <a href="edit-profile.html">Edit Profile</a>
+            <a href="#" class="profile-dropdown-logout" id="profileDropdownLogout">Logout</a>
+          </div>
+        </div>
+        <a href="wishlist.html" class="icon-button" aria-label="Wishlist">
+          <span class="wishlist-icon-wrapper">
+            <img src="imgs/wishlist-01.png" alt="Wishlist">
+            <span class="wishlist-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="cart.html" class="icon-button" aria-label="Cart">
+          <span class="cart-icon-wrapper">
+            <img src="imgs/cart-01.png" alt="Cart">
+            <span class="cart-badge" style="display: none;">0</span>
+          </span>
+        </a>
+        <a href="signin.html" class="btn btn-signup">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="account-page">
+    <div class="container">
+      <div class="account-layout">
+        <section class="account-content" style="margin-left:0;">
+          <div class="account-card">
+            <div class="account-card-header">
+              <h3>Profile details</h3>
+            </div>
+            <form id="profileForm" class="account-profile-form">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="account-name">Full name</label>
+                  <input type="text" id="account-name" required placeholder="Saurabhi Surve" />
+                </div>
+                <div class="form-field">
+                  <label for="account-email">Email</label>
+                  <input type="email" id="account-email" required placeholder="survesaurabhi7@gmail.com" />
+                </div>
+                <div class="form-field">
+                  <label for="account-phone">Phone</label>
+                  <input type="tel" id="account-phone" placeholder="+91 00000 00000" />
+                </div>
+              </div>
+              <p class="form-helper-text" style="margin-top:0.5rem; font-size:0.85rem; color:var(--color-text-muted);">
+                Your name and contact details will be used to pre-fill checkout and order updates.
+              </p>
+              <div class="form-actions" style="margin-top:1.25rem; display:flex; gap:0.75rem;">
+                <button type="submit" class="auth-btn">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <div class="brand-logo-square small">
+          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+        </div>
+        <div>
+          <p class="footer-brand-name">Mumbaa Ceramic Studio</p>
+          <p class="footer-address-line">Bungalow no.9, Sai Residency, Malvan Kasal Road,</p>
+          <p class="footer-address-line">Sindhudurg, Malvan – 416604</p>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="products.html?category=mugs">Mugs</a>
+          <a href="products.html?category=bowls">Bowls</a>
+          <a href="products.html?category=ashtrays">Ashtrays</a>
+          <a href="products.html?category=plates">Plates</a>
+          <a href="products.html?category=jars">Jars</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="shipping-returns.html">Shipping &amp; Returns</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mumbaa Ceramic Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/auth-state.js"></script>
+  <script src="js/profile-dropdown.js"></script>
+  <script src="js/cart-utils.js"></script>
+  <script src="js/wishlist-utils.js"></script>
+  <script>
+    (function () {
+      var PROFILE_KEY = 'mumbaa_account_profile';
+
+      function getStoredProfile() {
+        try {
+          var raw = localStorage.getItem(PROFILE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function saveProfile(profile) {
+        try {
+          localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+        } catch (e) {}
+      }
+
+      function loadProfileIntoForm() {
+        var profile = getStoredProfile();
+        var nameEl = document.getElementById('account-name');
+        var emailEl = document.getElementById('account-email');
+        var phoneEl = document.getElementById('account-phone');
+        if (typeof getCurrentUser === 'function' && getCurrentUser()) {
+          var u = getCurrentUser();
+          if (!profile.name && u.displayName) profile.name = u.displayName;
+          if (!profile.email && u.email) profile.email = u.email;
+        }
+        if (nameEl) nameEl.value = profile.name || '';
+        if (emailEl) emailEl.value = profile.email || '';
+        if (phoneEl) phoneEl.value = profile.phone || '';
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('profileForm');
+        loadProfileIntoForm();
+
+        if (form) {
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = document.getElementById('account-name').value.trim();
+            var email = document.getElementById('account-email').value.trim();
+            var phone = document.getElementById('account-phone').value.trim();
+            if (!name || !email) {
+              alert('Please enter name and email.');
+              return;
+            }
+
+            var profile = { name: name, email: email, phone: phone };
+            saveProfile(profile);
+
+            var u = (typeof getCurrentUser === 'function' && getCurrentUser()) ? getCurrentUser() : (typeof auth !== 'undefined' && auth && auth.currentUser ? auth.currentUser : null);
+            var promises = [];
+            if (u && u.updateProfile) {
+              promises.push(u.updateProfile({ displayName: name }).catch(function () {}));
+            }
+            if (typeof db !== 'undefined' && db && u && u.uid) {
+              promises.push(
+                db.collection('users').doc(u.uid).set({
+                  fullName: name,
+                  email: email,
+                  phone: phone
+                }, { merge: true })
+              );
+            }
+
+            Promise.all(promises).then(function () {
+              alert('Profile updated successfully.');
+            }).catch(function () {
+              alert('Profile updated locally. Some account fields could not be synced.');
+            });
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+

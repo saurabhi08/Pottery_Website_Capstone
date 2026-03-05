@@ -11,6 +11,9 @@ function getCurrentUser() {
 
 function signOut() {
   if (typeof auth !== 'undefined' && auth) {
+    try {
+      localStorage.removeItem('mumbaa_account_profile');
+    } catch (e) {}
     return auth.signOut().then(function () {
       window.location.href = 'index.html';
     }).catch(function () {

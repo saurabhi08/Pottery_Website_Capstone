@@ -355,9 +355,11 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="header-left">
-        <div class="brand-logo-square">
-          <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
-        </div>
+        <a href="index.html" class="brand-logo-link">
+          <div class="brand-logo-square">
+            <img src="imgs/logo.png" alt="Mumbaa Ceramic Studio Logo">
+          </div>
+        </a>
         <a href="index.html" class="brand-text">mumbaaceramicstudio</a>
       </div>
 
@@ -381,10 +383,10 @@
             <a href="contact.html">Help</a>
             <div class="profile-dropdown-divider"></div>
             <a href="account.html#coupons">Coupons</a>
-            <a href="account.html#saved-cards">Saved Cards</a>
-            <a href="account.html#addresses">Saved Address</a>
+            <a href="saved-cards.html">Saved Cards</a>
+            <a href="saved-address.html">Saved Address</a>
             <div class="profile-dropdown-divider"></div>
-            <a href="account.html#profile">Edit Profile</a>
+            <a href="edit-profile.html">Edit Profile</a>
             <a href="#" class="profile-dropdown-logout" id="profileDropdownLogout">Logout</a>
           </div>
         </div>
@@ -578,6 +580,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/auth.js"></script>
+  <script src="js/auth-state.js"></script>
   <script src="js/profile-dropdown.js"></script>
   <script src="js/firestore-service.js"></script>
   <script src="js/cart-utils.js"></script>

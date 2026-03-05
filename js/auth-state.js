@@ -32,19 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }
       }
-      if (role === 'admin') {
-        var adminLink = document.querySelector('.nav-link[href="admin.html"]');
-        if (!adminLink) {
-          var nav = document.querySelector('.main-nav');
-          if (nav) {
-            var a = document.createElement('a');
-            a.href = 'admin.html';
-            a.className = 'nav-link';
-            a.textContent = 'Admin';
-            nav.appendChild(a);
-          }
-        }
-      }
+      // Admin link not shown in nav – admin goes to admin page via sign-in redirect only
     } else {
       if (signUpBtn) {
         // Logged out: show Sign In button

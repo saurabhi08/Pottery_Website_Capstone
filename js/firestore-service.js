@@ -166,6 +166,58 @@ var firestoreService = {
       .catch(function () { return null; });
   },
 
+  incrementCouponUsed: function (couponId) {
+    if (!db || !couponId) return Promise.resolve();
+    var increment = firebase.firestore.FieldValue && firebase.firestore.FieldValue.increment;
+    if (!increment) return Promise.resolve();
+    return db.collection('coupons').doc(couponId).update({ usedCount: increment(1) })
+      .catch(function (err) { console.warn('Coupon use count increment failed:', err); });
+  },
+
+  getPaymentSettings: function () {
+    if (!db) return Promise.resolve({ stripeEnabled: true });
+    return db.collection('settings').doc('payment_methods').get()
+      .then(function (doc) {
+        var data = doc.exists ? doc.data() : {};
+        return { stripeEnabled: data.stripeEnabled !== false };
+      })
+      .catch(function () { return { stripeEnabled: true }; });
+  },
+
+  getActiveCouponsForDisplay: function () {
+    if (!db) return Promise.resolve([]);
+    return db.collection('coupons').get()
+      .then(function (snap) {
+        var now = new Date();
+        return snap.docs
+          .filter(function (d) {
+            var data = d.data();
+            if (data.expiryDate && data.expiryDate.toDate && data.expiryDate.toDate() < now) return false;
+            var limit = typeof data.usageLimit === 'number' ? data.usageLimit : 0;
+            if (limit > 0) {
+              var used = typeof data.usedCount === 'number' ? data.usedCount : 0;
+              if (used >= limit) return false;
+            }
+            return true;
+          })
+          .map(function (d) {
+            var data = d.data();
+            var code = data.code || d.id;
+            var type = data.type || 'percent';
+            var value = typeof data.value === 'number' ? data.value : 0;
+            var minOrder = typeof data.minOrderValue === 'number' ? data.minOrderValue : 0;
+            var label = '';
+            if (type === 'percent') label = value + '% off';
+            else if (type === 'fixed') label = '₹' + value + ' off';
+            else if (type === 'free_shipping') label = 'Free shipping';
+            else label = code;
+            if (minOrder > 0) label += ' on orders over ₹' + minOrder;
+            return { code: code, label: label };
+          });
+      })
+      .catch(function () { return []; });
+  },
+
   getReviews: function (productId) {
     if (!db) return Promise.resolve([]);
     return db.collection('reviews').where('productId', '==', productId).orderBy('createdAt', 'desc').get()

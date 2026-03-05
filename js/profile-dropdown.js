@@ -11,23 +11,56 @@
     }
   }
 
-  function updateGreeting() {
+  function updateGreeting(userFromAuth) {
     var nameEl = document.getElementById('profileDropdownName');
     var metaEl = document.getElementById('profileDropdownMeta');
     if (!nameEl && !metaEl) return;
-    var profile = getStoredProfile();
-    var name = profile.name || '';
-    var phone = profile.phone || '';
-    var email = profile.email || '';
-    if (typeof getCurrentUser === 'function') {
-      var u = getCurrentUser();
-      if (u) {
-        if (u.displayName) name = name || u.displayName;
-        if (u.email) email = email || u.email;
+    var u = userFromAuth || (typeof getCurrentUser === 'function' ? getCurrentUser() : null);
+    if (u) {
+      var profile = getStoredProfile();
+      var baseName = '';
+      // 1) Prefer saved profile name (from Account page or signup)
+      if (profile && (profile.name || profile.fullName)) {
+        baseName = String(profile.name || profile.fullName).trim().split(/\s+/)[0];
       }
+      // 2) Then Firebase displayName
+      if (!baseName && u.displayName && u.displayName.trim()) {
+        baseName = u.displayName.trim().split(/\s+/)[0];
+      }
+      // 3) If still missing, fall back to email prefix but also persist it,
+      // so the user can later edit it from the Account page.
+      if (!baseName && u.email) {
+        baseName = u.email.split('@')[0];
+        try {
+          localStorage.setItem('mumbaa_account_profile', JSON.stringify({
+            name: baseName,
+            email: u.email
+          }));
+        } catch (e) {}
+      }
+
+      var email = (profile && profile.email) || u.email || '';
+      var phone = (profile && profile.phone) || '';
+
+      if (typeof getUserRole === 'function') {
+        getUserRole(function (role) {
+          if (role === 'admin') {
+            if (nameEl) nameEl.textContent = 'Admin';
+            if (metaEl) metaEl.textContent = 'Admin account';
+            return;
+          }
+          if (nameEl) nameEl.textContent = baseName || 'Guest';
+          if (metaEl) metaEl.textContent = phone || email || 'Sign in to save your details';
+        });
+      } else {
+        if (nameEl) nameEl.textContent = baseName || 'Guest';
+        if (metaEl) metaEl.textContent = phone || email || 'Sign in to save your details';
+      }
+      return;
     }
-    if (nameEl) nameEl.textContent = name || 'Guest';
-    if (metaEl) metaEl.textContent = phone || email || 'Sign in to save your details';
+    // Logged out: always show Guest, do not use stored profile
+    if (nameEl) nameEl.textContent = 'Guest';
+    if (metaEl) metaEl.textContent = 'Sign in to save your details';
   }
 
   function init() {
